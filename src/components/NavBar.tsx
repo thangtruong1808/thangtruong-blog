@@ -66,11 +66,10 @@ const NavBar: React.FC<NavBarProps> = ({
               <Link
                 key={index}
                 to={getCategoryPath(category)}
-                className={`font-medium transition-colors duration-200 ${
-                  isActiveLink(category)
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                }`}
+                className={`font-medium transition-colors duration-200 ${isActiveLink(category)
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  }`}
               >
                 {category}
               </Link>
@@ -84,9 +83,17 @@ const NavBar: React.FC<NavBarProps> = ({
 
             {/* User Avatar and Name */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
-                {userName.charAt(0).toUpperCase()}
-              </div>
+              {userAvatar ? (
+                <img
+                  src={userAvatar}
+                  alt={userName}
+                  className="w-8 h-8 rounded-full object-cover border border-gray-200 dark:border-gray-700"
+                />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
+                  {userName.charAt(0).toUpperCase()}
+                </div>
+              )}
               <span className="hidden sm:block text-gray-700 dark:text-gray-300 font-medium">
                 {userName}
               </span>
@@ -122,11 +129,10 @@ const NavBar: React.FC<NavBarProps> = ({
                 <Link
                   key={index}
                   to={getCategoryPath(category)}
-                  className={`block px-3 py-2 rounded-lg transition-colors duration-200 ${
-                    isActiveLink(category)
-                      ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                      : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  }`}
+                  className={`block px-3 py-2 rounded-lg transition-colors duration-200 ${isActiveLink(category)
+                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
+                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {category}
