@@ -101,6 +101,17 @@ const BlogPage: React.FC<BlogPageProps> = ({
   const featuredProjects: Project[] = [
     {
       id: 1,
+      title: "Todo List Application",
+      description:
+        "Built a full-stack task management app with an Express/MySQL REST API and a React/Vite + TypeScript frontend, featuring both Kanban drag-and-drop and sortable list views, robust validation/filtering, and comprehensive documentation plus Postman testing guides.",
+      technologies: ["HTML5", "TailwindCSS", "TypeScript", "React.js", "Express.js", "MySQL"],
+      image:
+        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=250&fit=crop",
+      liveUrl: "https://example.com",
+      githubUrl: "https://github.com/johndoe/todo-app",
+    },
+    {
+      id: 2,
       title: "Personal Portfolio Website",
       description:
         "A responsive portfolio website built with React and TypeScript. Features include dark mode, smooth animations, and mobile-first design.",
@@ -115,17 +126,6 @@ const BlogPage: React.FC<BlogPageProps> = ({
         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=250&fit=crop",
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/johndoe/portfolio",
-    },
-    {
-      id: 2,
-      title: "Todo List Application",
-      description:
-        "A simple but functional todo app with local storage, drag-and-drop functionality, and clean UI design.",
-      technologies: ["React", "JavaScript", "CSS3", "LocalStorage", "HTML5"],
-      image:
-        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=250&fit=crop",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/johndoe/todo-app",
     },
     {
       id: 3,
@@ -147,20 +147,45 @@ const BlogPage: React.FC<BlogPageProps> = ({
   ];
 
   const skills: Skill[] = [
-    { name: "HTML5", level: 5, category: "Frontend" },
-    { name: "CSS3", level: 4, category: "Frontend" },
+    // Frontend
+    { name: "HTML5 and CSS3", level: 4, category: "Frontend" },
+    { name: "TailwindCSS", level: 4, category: "Frontend" },
     { name: "JavaScript", level: 4, category: "Frontend" },
-    { name: "React", level: 3, category: "Frontend" },
-    { name: "TypeScript", level: 2, category: "Frontend" },
-    { name: "Node.js", level: 2, category: "Backend" },
-    { name: "Express.js", level: 2, category: "Backend" },
-    { name: "MongoDB", level: 2, category: "Database" },
-    { name: "Git", level: 3, category: "Tools" },
-    { name: "VS Code", level: 4, category: "Tools" },
-    { name: "Data Structures", level: 4, category: "Education" },
-    { name: "Algorithms", level: 3, category: "Education" },
-    { name: "Object-Oriented Programming", level: 4, category: "Education" },
-    { name: "Software Engineering", level: 3, category: "Education" },
+    { name: "TypeScript", level: 3, category: "Frontend" },
+    { name: "React", level: 4, category: "Frontend" },
+
+    // Backend
+    { name: "Next.js", level: 3, category: "Backend" },
+    { name: "GraphQL", level: 3, category: "Backend" },
+    { name: "Node.js", level: 3, category: "Backend" },
+    { name: "Express.js", level: 3, category: "Backend" },
+
+    // Database
+    { name: "MySQL", level: 3, category: "Database" },
+    { name: "PostgreSQL", level: 3, category: "Database" },
+    { name: "MongoDB", level: 3, category: "Database" },
+
+    // Tools    
+    { name: "GitHub", level: 4, category: "Tools" },
+    { name: "MySQL Workbench", level: 4, category: "Tools" },
+    { name: "Figma", level: 4, category: "Tools" },
+    { name: "Postman", level: 4, category: "Tools" },
+    { name: "Jira", level: 4, category: "Tools" },
+    { name: "Slack", level: 4, category: "Tools" },
+
+    // Cloud
+    { name: "AWS Architecture", level: 3, category: "Cloud" },
+    { name: "AWS EC2", level: 3, category: "Cloud" },
+    { name: "AWS S3", level: 3, category: "Cloud" },
+    { name: "AWS RDS", level: 3, category: "Cloud" },
+    { name: "AWS CloudFront", level: 3, category: "Cloud" },
+    { name: "AWS CloudWatch", level: 3, category: "Cloud" },
+
+    // AICodeAgent
+    { name: "Cursor", level: 4, category: "AICodeAgent" },
+    { name: "GitHub Copilot", level: 4, category: "AICodeAgent" },
+    { name: "Google Gemini", level: 4, category: "AICodeAgent" },
+    { name: "Copilot", level: 4, category: "AICodeAgent" },
   ];
 
   const achievements: Achievement[] = [
@@ -337,7 +362,7 @@ const BlogPage: React.FC<BlogPageProps> = ({
           Skills & Technologies
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {["Frontend", "Backend", "Database", "Education", "Tools"].map(
+          {["Frontend", "Backend", "Database", "Tools", "Cloud", "AICodeAgent"].map(
             (category) => (
               <div
                 key={category}
@@ -366,55 +391,6 @@ const BlogPage: React.FC<BlogPageProps> = ({
               </div>
             )
           )}
-        </div>
-      </section>
-
-      {/* Recent Blog Posts */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-          Latest Articles
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <article
-              key={post.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-            >
-              {post.image && (
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-                    {post.category}
-                  </span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {post.readTime}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <time className="text-sm text-gray-500 dark:text-gray-400">
-                    {formatDate(post.date)}
-                  </time>
-                  <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm transition-colors duration-200">
-                    Read more →
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 
