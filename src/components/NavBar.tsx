@@ -56,19 +56,19 @@ const NavBar: React.FC<NavBarProps> = ({
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex flex-col">
+          <div className="flex items-center space-x-3">
             <Link
               to="/"
-              className="flex items-center space-x-2 text-2xl font-bold text-blue-600 dark:text-blue-400"
+              className="flex items-center space-x-3 text-blue-600 dark:text-blue-400"
             >
-              <span className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-300">
+              <span className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-300">
                 {logoIcon}
               </span>
-              <span>{logo}</span>
+              <div className="flex flex-col leading-tight">
+                <span className="text-2xl font-bold">{logo}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">{logoSubtitle}</span>
+              </div>
             </Link>
-            <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 text-center">
-              {logoSubtitle}
-            </span>
           </div>
 
           {/* Desktop Categories */}

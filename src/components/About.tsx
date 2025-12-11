@@ -6,74 +6,7 @@ interface AboutProps {
   authorAvatar?: string;
 }
 
-const About: React.FC<AboutProps> = ({
-  authorName,
-  authorBio,
-  authorAvatar = "",
-}) => {
-  const skills = [
-    {
-      category: "Frontend",
-      items: [
-        "React",
-        "TypeScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Tailwind CSS",
-        "Next.js",
-      ],
-    },
-    {
-      category: "Backend",
-      items: [
-        "Node.js",
-        "Express.js",
-        "Python",
-        "MongoDB",
-        "PostgreSQL",
-        "REST APIs",
-      ],
-    },
-    {
-      category: "Tools & Others",
-      items: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Docker", "AWS"],
-    },
-  ];
-
-  const experiences = [
-    {
-      title: "Student Mentor",
-      company: "Swinburne University - Melbourne - Victoria, Australia",
-      period: "July 2022 - May 2025",
-      description:
-        "Selected as a mentor to support new students in navigating the Canvas online system, offering guidance on academic integrity, assignments, discussions, referencing, and weekly readings. Provided weekly study tips to keep mentees motivated and on track, while addressing questions and offering strategies for managing unforeseen issues and completing assignments effectively.",
-    },
-    {
-      title: "Transport Pelletizer",
-      company: "ALDI Distribution Warehouse - Truganina - Melbourne - Victoria, Australia",
-      period: "Oct 2016 - March 2025",
-      description:
-        "Skilled in operating warehouse machinery to build secure pallets, efficiently load/unload trailers, and manage stock shipments to retail stores while maintaining safety and teamwork in a fast-paced environment for retail stores.",
-    },
-    {
-      title: "Software Developer/Tester",
-      company: "Global CyberSoft - HoChiMinh City, Vietnam",
-      period: "May 2004 - July 2007",
-      description:
-        "Contributed to the development and maintenance of web applications using PHP, and JavaScript frameworks, ensuring scalable and efficient code. Executed comprehensive testing strategies, including junit, integration, and system testing, to identify bugs and ensure high-quality software releases. Worked closely within a collaborative team environment to troubleshoot technical issues, refine requirements, and deliver projects on schedule",
-    },
-  ];
-
-  const education = [
-    {
-      degree: "Bachelor of Computer Science",
-      school: "University Name",
-      period: "2019 - 2023",
-      description:
-        "Focused on software engineering, algorithms, and web development.",
-    },
-  ];
+const About: React.FC<AboutProps> = ({ authorName, authorBio, authorAvatar = "" }) => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -136,31 +69,6 @@ const About: React.FC<AboutProps> = ({
         </div>
       </div>
 
-
-      {/* Experience Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Professional Experience
-        </h2>
-        <div className="space-y-6">
-          {experiences.map((experience, index) => (
-            <div key={index} className="border-l-4 border-blue-500 pl-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {experience.title}
-              </h3>
-              <p className="text-blue-600 dark:text-blue-400 font-medium">
-                {experience.company}
-              </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                {experience.period}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                {experience.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
 
 
       {/* Personal Interests */}

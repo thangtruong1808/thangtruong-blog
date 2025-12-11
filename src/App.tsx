@@ -9,6 +9,7 @@ import ScrollButtons from "./components/ScrollButtons";
 import authorPhoto from "./assets/TT-Photo.jpg";
 import FeaturedProjectsPage from "./components/FeaturedProjectsPage";
 import SkillsPage from "./components/SkillsPage";
+import Experience from "./components/Experience";
 
 function App() {
   const authorInfo = {
@@ -18,7 +19,7 @@ function App() {
     authorAvatar: authorPhoto,
   };
 
-  const navCategories = ["Home", "About", "Projects", "Skills", "Education", "Contact"];
+  const navCategories = ["Home", "About", "Projects", "Skills", "Experience", "Contact"];
 
   return (
     <Router>
@@ -37,6 +38,8 @@ function App() {
             <Route path="/about" element={<About {...authorInfo} />} />
             <Route path="/projects" element={<FeaturedProjectsPage />} />
             <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/experience" element={<Experience />} />
+            {/* Education route retained in case deep links exist; removed from nav */}
             <Route path="/education" element={<Education />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

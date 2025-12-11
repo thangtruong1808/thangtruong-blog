@@ -5,21 +5,19 @@ import React, { useEffect, useState } from "react";
 import ContactFormCard from "./contact/ContactFormCard";
 import ContactInfoCard from "./contact/ContactInfoCard";
 import AvailabilityCard from "./contact/AvailabilityCard";
-import type { ContactInfoItem, SocialLinkItem } from "./contact/contactData";
-import { fetchContactInfo, fetchSocialLinks } from "./contact/contactData";
+import type { ContactInfoItem } from "./contact/contactData";
+import { fetchContactInfo } from "./contact/contactData";
 
 /**
  * Loads contact data asynchronously and renders contact page sections.
  */
 const Contact: React.FC = () => {
   const [contactInfo, setContactInfo] = useState<ContactInfoItem[]>([]);
-  const [socialLinks, setSocialLinks] = useState<SocialLinkItem[]>([]);
 
   useEffect(() => {
     const loadContactData = async () => {
-      const [info, socials] = await Promise.all([fetchContactInfo(), fetchSocialLinks()]);
+      const info = await fetchContactInfo();
       setContactInfo(info);
-      setSocialLinks(socials);
     };
 
     void loadContactData();
@@ -41,7 +39,7 @@ const Contact: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <ContactFormCard />
         <div className="space-y-8">
-          <ContactInfoCard contactInfo={contactInfo} socialLinks={socialLinks} />
+          <ContactInfoCard contactInfo={contactInfo} />
           <AvailabilityCard />
         </div>
       </div>
