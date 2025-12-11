@@ -27,8 +27,6 @@ function App() {
           <NavBar
             logo="Thang Truong"
             categories={navCategories}
-            userName="Thang Truong"
-            userAvatar={authorPhoto}
           />
         </header>
 

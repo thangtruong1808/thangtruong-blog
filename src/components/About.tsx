@@ -43,18 +43,25 @@ const About: React.FC<AboutProps> = ({
 
   const experiences = [
     {
-      title: "Full-Stack Developer",
-      company: "Freelance",
-      period: "2023 - Present",
+      title: "Student Mentor",
+      company: "Swinburne University - Melbourne - Victoria, Australia",
+      period: "July 2022 - May 2025",
       description:
-        "Building responsive web applications using React, TypeScript, and Node.js. Collaborating with clients to deliver scalable solutions.",
+        "Selected as a mentor to support new students in navigating the Canvas online system, offering guidance on academic integrity, assignments, discussions, referencing, and weekly readings. Provided weekly study tips to keep mentees motivated and on track, while addressing questions and offering strategies for managing unforeseen issues and completing assignments effectively.",
     },
     {
-      title: "Frontend Developer Intern",
-      company: "Tech Startup",
-      period: "2022 - 2023",
+      title: "Transport Pelletizer",
+      company: "ALDI Distribution Warehouse - Truganina - Melbourne - Victoria, Australia",
+      period: "Oct 2016 - March 2025",
       description:
-        "Developed user interfaces and implemented responsive designs. Worked with React and modern CSS frameworks.",
+        "Skilled in operating warehouse machinery to build secure pallets, efficiently load/unload trailers, and manage stock shipments to retail stores while maintaining safety and teamwork in a fast-paced environment for retail stores.",
+    },
+    {
+      title: "Software Developer/Tester",
+      company: "Global CyberSoft - HoChiMinh City, Vietnam",
+      period: "May 2004 - July 2007",
+      description:
+        "Contributed to the development and maintenance of web applications using PHP, and JavaScript frameworks, ensuring scalable and efficient code. Executed comprehensive testing strategies, including junit, integration, and system testing, to identify bugs and ensure high-quality software releases. Worked closely within a collaborative team environment to troubleshoot technical issues, refine requirements, and deliver projects on schedule",
     },
   ];
 
@@ -129,31 +136,6 @@ const About: React.FC<AboutProps> = ({
         </div>
       </div>
 
-      {/* Skills Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Skills & Technologies
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skills.map((skillGroup, index) => (
-            <div key={index}>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                {skillGroup.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skillGroup.items.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Experience Section */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-12">
@@ -180,30 +162,6 @@ const About: React.FC<AboutProps> = ({
         </div>
       </div>
 
-      {/* Education Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Education
-        </h2>
-        <div className="space-y-6">
-          {education.map((edu, index) => (
-            <div key={index} className="border-l-4 border-green-500 pl-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {edu.degree}
-              </h3>
-              <p className="text-green-600 dark:text-green-400 font-medium">
-                {edu.school}
-              </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                {edu.period}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                {edu.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Personal Interests */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
@@ -219,9 +177,9 @@ const About: React.FC<AboutProps> = ({
               <li>
                 • Reading tech blogs and staying updated with industry trends
               </li>
-              <li>• Contributing to open-source projects</li>
               <li>• Writing technical blog posts and tutorials</li>
-              <li>• Participating in hackathons and coding challenges</li>
+              <li>• Camping and hiking from favorite places in Victoria, Australia</li>
+              <li>• Badminton is my favorite sport</li>
             </ul>
           </div>
           <div>
@@ -229,7 +187,7 @@ const About: React.FC<AboutProps> = ({
               Goals
             </h3>
             <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-              <li>• Master advanced React patterns and state management</li>
+              <li>• Master advanced JavaScript and associated frameworks and libraries</li>
               <li>• Contribute to major open-source projects</li>
               <li>• Build a successful SaaS product</li>
               <li>• Mentor junior developers and share knowledge</li>

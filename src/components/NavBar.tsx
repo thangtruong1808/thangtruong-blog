@@ -4,16 +4,21 @@ import ThemeSwitch from "./ThemeSwitch";
 
 interface NavBarProps {
   logo?: string;
+  logoIcon?: React.ReactNode;
+  logoSubtitle?: string;
   categories?: string[];
-  userName?: string;
-  userAvatar?: string;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
   logo = "Logo",
+  logoIcon = (
+    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M12 3l7 4v6c0 3.5-2.5 6.5-7 8-4.5-1.5-7-4.5-7-8V7l7-4z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  ),
+  logoSubtitle = "Software Developer",
   categories = ["Home", "Products", "Services", "About", "Contact"],
-  userName = "User",
-  userAvatar = "",
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -51,13 +56,19 @@ const NavBar: React.FC<NavBarProps> = ({
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div>
+          <div className="flex flex-col">
             <Link
               to="/"
-              className="text-2xl font-bold text-blue-600 dark:text-blue-400"
+              className="flex items-center space-x-2 text-2xl font-bold text-blue-600 dark:text-blue-400"
             >
-              {logo}
+              <span className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-300">
+                {logoIcon}
+              </span>
+              <span>{logo}</span>
             </Link>
+            <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 text-center">
+              {logoSubtitle}
+            </span>
           </div>
 
           {/* Desktop Categories */}
@@ -76,30 +87,10 @@ const NavBar: React.FC<NavBarProps> = ({
             ))}
           </div>
 
-          {/* User Profile and Theme Switch */}
+          {/* Theme switch and mobile menu */}
           <div className="flex items-center space-x-4">
-            {/* Theme Switch */}
             <ThemeSwitch className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" />
 
-            {/* User Avatar and Name */}
-            <div className="flex items-center space-x-2">
-              {userAvatar ? (
-                <img
-                  src={userAvatar}
-                  alt={userName}
-                  className="w-8 h-8 rounded-full object-cover border border-gray-200 dark:border-gray-700"
-                />
-              ) : (
-                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
-                  {userName.charAt(0).toUpperCase()}
-                </div>
-              )}
-              <span className="hidden sm:block text-gray-700 dark:text-gray-300 font-medium">
-                {userName}
-              </span>
-            </div>
-
-            {/* Mobile Menu Button */}
             <button
               className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
               onClick={toggleMobileMenu}

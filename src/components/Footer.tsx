@@ -9,19 +9,19 @@ interface FooterProps {
 const socialMedia = [
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/in/thangtruong-se", // Replace with your actual profile URL
+    href: import.meta.env.VITE_LINKEDIN_URL ?? "",
     icon: FaLinkedin,
     color: "text-[#0A66C2] hover:opacity-80", // Official LinkedIn blue
   },
   {
     name: "Facebook",
-    href: "https://facebook.com/thangtruong.se", // Replace with your actual profile URL
+    href: import.meta.env.VITE_FACEBOOK_URL ?? "",
     icon: FaFacebook,
     color: "text-[#1877F2] hover:opacity-80", // Official Facebook blue
   },
   {
     name: "GitHub",
-    href: "https://github.com/thangtruong-se", // Replace with your actual profile URL
+    href: import.meta.env.VITE_GITHUB_URL ?? "",
     icon: FaGithub,
     color: "text-gray-600 dark:text-gray-400 hover:opacity-80",
   },
@@ -49,21 +49,23 @@ const Footer = ({ companyName, categories }: FooterProps) => {
           ))}
         </nav>
         <div className="mt-10 flex justify-center space-x-10">
-          {socialMedia.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className=""
-            >
-              <span className="sr-only">{item.name}</span>
-              <item.icon
-                className={`h-6 w-6 transition-colors duration-300 ${item.color}`}
-                aria-hidden="true"
-              />
-            </a>
-          ))}
+          {socialMedia
+            .filter((item) => Boolean(item.href))
+            .map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className=""
+              >
+                <span className="sr-only">{item.name}</span>
+                <item.icon
+                  className={`h-6 w-6 transition-colors duration-300 ${item.color}`}
+                  aria-hidden="true"
+                />
+              </a>
+            ))}
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500 dark:text-gray-400">
           &copy; {new Date().getFullYear()} {companyName}. All rights reserved.
