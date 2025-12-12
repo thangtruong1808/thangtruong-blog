@@ -40,11 +40,6 @@ interface BlogPageProps {
   authorName: string;
   authorBio: string;
   authorAvatar?: string;
-  location?: string;
-  email?: string;
-  github?: string;
-  linkedin?: string;
-  facebook?: string;
 }
 
 /**
@@ -54,11 +49,6 @@ const BlogPage: React.FC<BlogPageProps> = ({
   authorName,
   authorBio,
   authorAvatar = authorPhoto,
-  location = "Truganina, Melbourne, Victoria, Australia",
-  email = import.meta.env.VITE_AUTHOR_EMAIL ?? "",
-  github = import.meta.env.VITE_GITHUB_URL ?? "",
-  linkedin = import.meta.env.VITE_LINKEDIN_URL ?? "",
-  facebook = import.meta.env.VITE_FACEBOOK_URL ?? "",
 }) => {
   const featuredVideoUrl = getEmbedUrl(import.meta.env.VITE_FEATURED_VIDEO_URL ?? "");
   const [projects, setProjects] = useState<Project[]>([]);
@@ -81,11 +71,6 @@ const BlogPage: React.FC<BlogPageProps> = ({
         authorName={authorName}
         authorBio={authorBio}
         authorAvatar={authorAvatar}
-        location={location}
-        email={email}
-        github={github}
-        linkedin={linkedin}
-        facebook={facebook}
         projects={projects}
       />
       {featuredVideoUrl && (

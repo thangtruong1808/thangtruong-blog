@@ -8,11 +8,6 @@ interface HeroSectionProps {
   authorName: string;
   authorBio: string;
   authorAvatar?: string;
-  location?: string;
-  email?: string;
-  github?: string;
-  linkedin?: string;
-  facebook?: string;
   projects: Project[];
 }
 
@@ -23,11 +18,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   authorName,
   authorBio,
   authorAvatar = "",
-  location = "Truganina, Melbourne, Victoria, Australia",
-  email = import.meta.env.VITE_AUTHOR_EMAIL ?? "",
-  github = import.meta.env.VITE_GITHUB_URL ?? "",
-  linkedin = import.meta.env.VITE_LINKEDIN_URL ?? "",
-  facebook = import.meta.env.VITE_FACEBOOK_URL ?? "",
   projects,
 }) => {
   return (
