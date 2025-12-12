@@ -92,7 +92,7 @@ const BlogPage: React.FC<BlogPageProps> = ({
         // Featured video section wrapper
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-            Meet Thang Truong (2 min)
+            Introduction Video (2 min)
           </h2>
           <div className="relative pt-[56.25%] rounded-lg overflow-hidden shadow-lg">
             <iframe

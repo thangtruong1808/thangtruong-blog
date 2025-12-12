@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import ScrollButtons from "./components/ScrollButtons";
 import authorPhoto from "./assets/TT-Photo.jpg";
 import FeaturedProjectsPage from "./components/FeaturedProjectsPage";
+import ProjectDetailPage from "./components/ProjectDetailPage";
 import SkillsPage from "./components/SkillsPage";
 import Experience from "./components/Experience";
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/home" element={<BlogPage {...authorInfo} />} />
             <Route path="/about" element={<About {...authorInfo} />} />
             <Route path="/projects" element={<FeaturedProjectsPage />} />
+            <Route path="/projects/:id" element={<ProjectDetailPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/experience" element={<Experience />} />
             {/* Education route retained in case deep links exist; removed from nav */}
@@ -46,7 +48,7 @@ function App() {
         </main>
 
         <ScrollButtons />
-        <Footer companyName="Thang Truong" categories={navCategories} />
+        <Footer categories={navCategories} />
       </div>
     </Router>
   );

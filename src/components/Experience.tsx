@@ -1,4 +1,4 @@
-// Purpose: Standalone page showing professional experience.
+// Purpose: Standalone page showing professional experience with header description.
 // Author: Thang Truong
 // Date: 2025-12-11
 import React, { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ interface Experience {
 }
 
 /**
- * Simulates async fetch of experience entries.
+ * Fetches professional experience entries asynchronously.
  */
 const fetchExperiences = async (): Promise<Experience[]> => {
   return [
@@ -39,6 +39,9 @@ const fetchExperiences = async (): Promise<Experience[]> => {
   ];
 };
 
+/**
+ * Loads and displays professional experience with header description.
+ */
 const Experience: React.FC = () => {
   const [experiences, setExperiences] = useState<Experience[]>([]);
 
@@ -53,10 +56,23 @@ const Experience: React.FC = () => {
   return (
     // Experience page wrapper
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+      {/* Header section */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           Professional Experience
-        </h2>
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Throughout my career, I've had the privilege of working in diverse roles that have
+          shaped my professional journey. From software development and testing to mentoring
+          students and managing warehouse operations, each experience has contributed to my
+          growth as a developer and team player. Below you'll find a timeline of my professional
+          experiences, highlighting the skills, responsibilities, and achievements I've gained
+          along the way.
+        </p>
+      </div>
+
+      {/* Experience timeline */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
         <div className="space-y-6">
           {experiences.map((experience, index) => (
             <div key={index} className="border-l-4 border-blue-500 pl-6">

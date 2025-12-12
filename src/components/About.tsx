@@ -40,13 +40,13 @@ const About: React.FC<AboutProps> = ({ authorName, authorBio, authorAvatar = "" 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4 text-justify">
               I'm a passionate developer who loves creating meaningful digital
               experiences. My journey in web development started with curiosity
               about how websites work, which quickly evolved into a deep passion
               for building applications that solve real-world problems.
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4 text-justify">
               I believe in writing clean, maintainable code and staying
               up-to-date with the latest technologies. When I'm not coding, you
               can find me exploring new frameworks, contributing to open-source
@@ -54,13 +54,13 @@ const About: React.FC<AboutProps> = ({ authorName, authorBio, authorAvatar = "" 
             </p>
           </div>
           <div>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4 text-justify">
               I'm particularly interested in creating user-friendly interfaces
               and scalable backend solutions. My goal is to build applications
               that not only work flawlessly but also provide an excellent user
               experience.
             </p>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 text-justify">
               I'm always open to new opportunities and collaborations. If you're
               interested in working together or just want to chat about
               technology, feel free to reach out!

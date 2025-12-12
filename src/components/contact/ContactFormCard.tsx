@@ -1,7 +1,8 @@
-// Purpose: Render and manage the contact form submission workflow.
+// Purpose: Render and manage the contact form submission workflow with EmailJS.
 // Author: Thang Truong
 // Date: 2025-12-11
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 interface ContactForm {
   name: string;
@@ -11,7 +12,7 @@ interface ContactForm {
 }
 
 /**
- * Collects visitor messages with async submission simulation.
+ * Collects visitor messages and sends them via EmailJS service.
  */
 const ContactFormCard: React.FC = () => {
   const [formData, setFormData] = useState<ContactForm>({
@@ -39,14 +40,35 @@ const ContactFormCard: React.FC = () => {
   };
 
   /**
-   * Submits the form asynchronously, simulating API latency.
+   * Submits the form asynchronously using EmailJS service.
    */
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus("idle");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS configuration is missing");
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: "Thang Truong",
+        },
+        publicKey
+      );
+
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
@@ -134,9 +156,9 @@ const ContactFormCard: React.FC = () => {
             value={formData.message}
             onChange={handleInputChange}
             required
-            rows={6}
+            rows={5}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
-            placeholder="Tell me about your project or question..."
+            placeholder="your message..."
           />
         </div>
 

@@ -20,6 +20,7 @@ export interface Project {
   image?: string;
   liveUrl?: string;
   githubUrl?: string;
+  category?: "Frontend" | "Full-stack";
 }
 
 export interface Skill {
