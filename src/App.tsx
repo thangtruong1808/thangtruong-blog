@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// Purpose: Main application component with routing and layout.
+// Author: Thang Truong
+// Date: 2025-12-21
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import BlogPage from "./components/BlogPage";
@@ -12,6 +16,33 @@ import ProjectDetailPage from "./components/ProjectDetailPage";
 import SkillsPage from "./components/SkillsPage";
 import Experience from "./components/Experience";
 
+/**
+ * Updates document title based on current route.
+ */
+const DocumentTitle: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Skip title update for project detail pages - they set their own title
+    if (location.pathname.startsWith("/projects/") && location.pathname !== "/projects") {
+      return;
+    }
+
+    const getPageName = (pathname: string): string => {
+      if (pathname === "/" || pathname === "/home") return "Home";
+      const route = pathname.slice(1);
+      if (!route) return "Home";
+      const pageName = route.charAt(0).toUpperCase() + route.slice(1);
+      return pageName;
+    };
+
+    const pageName = getPageName(location.pathname);
+    document.title = `thang-truong.blog | ${pageName}`;
+  }, [location.pathname]);
+
+  return null;
+};
+
 function App() {
   const authorInfo = {
     authorName: "Thang Truong",
@@ -23,7 +54,9 @@ function App() {
   const navCategories = ["Home", "About", "Projects", "Skills", "Experience", "Contact"];
 
   return (
+    // App wrapper with router
     <Router>
+      <DocumentTitle />
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
         <header className="sticky top-0 z-40 w-full">
           <NavBar

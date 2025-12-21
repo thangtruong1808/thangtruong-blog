@@ -21,6 +21,9 @@ const ProjectDetailPage: React.FC = () => {
         const projects = await fetchProjects();
         const found = projects.find((p) => p.id === Number(id));
         setProject(found || null);
+        if (found) {
+          document.title = `thang-truong.blog | ${found.title}`;
+        }
       } catch (error) {
         setProject(null);
       } finally {
