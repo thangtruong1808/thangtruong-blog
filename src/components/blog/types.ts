@@ -1,5 +1,8 @@
 // Purpose: Shared type definitions for blog-related components.
 // Author: Thang Truong
+
+import type { ReactNode } from "react";
+
 // Date: 2025-12-11
 export interface BlogPost {
   id: number;
@@ -15,7 +18,7 @@ export interface BlogPost {
 export interface Project {
   id: number;
   title: string;
-  description: string;
+  description: ReactNode;
   technologies: string[];
   image?: string;
   liveUrl?: string;

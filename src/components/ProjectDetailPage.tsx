@@ -107,9 +107,9 @@ const ProjectDetailPage: React.FC = () => {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           {project.title}
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 text-justify">
+        <span className="text-xl text-gray-600 dark:text-gray-300 text-justify">
           {project.description}
-        </p>
+        </span>
       </div>
 
       {/* Technologies */}

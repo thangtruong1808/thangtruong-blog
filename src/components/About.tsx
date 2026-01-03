@@ -95,7 +95,7 @@ const About: React.FC<AboutProps> = ({ authorName, authorBio, authorAvatar = "" 
               Goals
             </h3>
             <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-              <li>• Master advanced JavaScript and associated frameworks and libraries</li>
+              <li>• Advanced JavaScript and associated frameworks and libraries</li>
               <li>• Contribute to major open-source projects</li>
               <li>• Build a successful SaaS product</li>
               <li>• Mentor junior developers and share knowledge</li>
