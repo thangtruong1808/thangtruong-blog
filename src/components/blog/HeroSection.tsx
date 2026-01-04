@@ -55,7 +55,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           📝 {projects.length} Featured Projects
         </span>
         <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
-          🎓 Recent Bachelor of Information and Communication Technology Graduate
+          🎓 Recent Bachelor of Information and Communication Technology
+          Graduate
         </span>
       </div>
     </div>
@@ -63,4 +64,3 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 export default HeroSection;
-

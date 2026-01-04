@@ -22,13 +22,13 @@ const fetchExperiences = async (): Promise<Experience[]> => {
       description:
         "Selected as a mentor to support new students in navigating Canvas, academic integrity, assignments, discussions, referencing, and weekly readings; provided study tips, answered questions, and guided assignment planning.",
     },
-    {
-      title: "Transport Pelletizer",
-      company: "ALDI Distribution Warehouse - Truganina - Melbourne - Victoria, Australia",
-      period: "Oct 2016 - March 2025",
-      description:
-        "Operated warehouse machinery to build secure pallets, load/unload trailers, and manage stock shipments to stores while maintaining safety and teamwork in a fast-paced environment.",
-    },
+    // {
+    //   title: "Transport Pelletizer",
+    //   company: "ALDI Distribution Warehouse - Truganina - Melbourne - Victoria, Australia",
+    //   period: "Oct 2016 - March 2025",
+    //   description:
+    //     "Operated warehouse machinery to build secure pallets, load/unload trailers, and manage stock shipments to stores while maintaining safety and teamwork in a fast-paced environment.",
+    // },
     {
       title: "Software Developer/Tester",
       company: "Global CyberSoft - HoChiMinh City, Vietnam",
@@ -62,12 +62,13 @@ const Experience: React.FC = () => {
           Professional Experience
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Throughout my career, I've had the privilege of working in diverse roles that have
-          shaped my professional journey. From software development and testing to mentoring
-          students and managing warehouse operations, each experience has contributed to my
-          growth as a developer and team player. Below you'll find a timeline of my professional
-          experiences, highlighting the skills, responsibilities, and achievements I've gained
-          along the way.
+          Throughout my career, I've had the privilege of working in diverse
+          roles that have shaped my professional journey. From software
+          development and testing to mentoring students and managing warehouse
+          operations, each experience has contributed to my growth as a
+          developer and team player. Below you'll find a timeline of my
+          professional experiences, highlighting the skills, responsibilities,
+          and achievements I've gained along the way.
         </p>
       </div>
 
@@ -79,9 +80,15 @@ const Experience: React.FC = () => {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {experience.title}
               </h3>
-              <p className="text-blue-600 dark:text-blue-400 font-medium">{experience.company}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{experience.period}</p>
-              <p className="text-gray-600 dark:text-gray-300">{experience.description}</p>
+              <p className="text-blue-600 dark:text-blue-400 font-medium">
+                {experience.company}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                {experience.period}
+              </p>
+              <p className="text-gray-600 dark:text-gray-300">
+                {experience.description}
+              </p>
             </div>
           ))}
         </div>
@@ -91,4 +98,3 @@ const Experience: React.FC = () => {
 };
 
 export default Experience;
-
