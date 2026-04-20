@@ -3,7 +3,7 @@
 // Date: 2025-12-11
 
 import type { Project } from "../types";
-import NewsStudioAppImage from "../../../assets/NEWSSTUDIOAPP_IMAGE.jpg";
+import ChibiLogo from "../../../assets/ChibiLogo.png";
 import CountriesExplorerAppImage from "../../../assets/CountriesExplorer2.jpg";
 
 /**
@@ -158,199 +158,290 @@ export const fetchProjects = async (): Promise<Project[]> => {
       category: "Full-stack",
     },
     {
-      id: 3,
-      title: "Project Tracker Application",
+      id: 3, // or your next id
+      title: "Badminton Club Platform - ChibiBadminton",
       description: (
         <div>
-          <p className="py-2">
-            Project Tracker is a full-stack application designed to bring
-            clarity and efficiency to project management. It provides a
-            centralized platform for teams to organize their work, communicate
-            effectively, and keep a detailed record of their progress. From
-            creating projects and assigning tasks to real-time discussions and
-            notifications, Project Tracker is built to support a collaborative
-            and productive workflow.
-          </p>
-          <p className="py-2">
-            At its core, the application allows users to manage projects and
-            tasks with ease. You can define project goals, set deadlines, and
-            break down the work into manageable tasks. Each task can be assigned
-            to team members, given a priority, and tagged for easy
-            categorization.
+          <p>
+            ChibiBadminton is a full-stack web application for running a badminton
+            club online: sessions and events, member accounts, a small shop with
+            Stripe checkout, and an admin dashboard for day-to-day operations. The
+            frontend is a responsive React app; the backend is a REST API built with
+            Express and TypeScript, backed by MySQL.
           </p>
 
-          <p className="py-2">
-            Collaboration is facilitated through a rich commenting system, where
-            team members can discuss task details, ask questions, and provide
-            updates. The system supports real-time notifications, ensuring that
-            you never miss an important conversation or a critical update. Users
-            can also 'like' projects, tasks, and comments to show appreciation
-            and engagement.
-          </p>
-
-          <p className="py-2">
-            For transparency and accountability, Project Tracker includes a
-            comprehensive activity logging system that records every significant
-            action taken within the application. A powerful search feature
-            allows you to quickly find information across all your projects,
-            tasks, and comments.
-          </p>
-
-          <p className="py-2">
-            With secure user authentication, role-based permissions, and a
-            clean, intuitive interface, Project Tracker is an ideal solution for
-            development teams, project managers, and any group looking to
-            improve their project management processes.
-          </p>
-
-          <p className="py-2">Key Features:</p>
+          <p className="mt-4 font-semibold">Key features include:</p>
 
           <ul className="list-disc ml-6 mt-2">
             <li className="py-2">
-              Secure user registration and login using JWT. Role-based access
-              control (Admin, Member) to manage permissions for different
-              actions
-            </li>
-
-            <li className="py-2">
-              Create, update, and delete projects. Track project status,
-              deadlines, and view all associated tasks and team members in a
-              centralized dashboard.
-            </li>
-
-            <li className="py-2">
-              Add tasks to projects, assign them to team members, set priorities
-              and due dates. The system tracks the status of each task from 'To
-              Do' to 'Done'
-            </li>
-
-            <li className="py-2">
-              Invite members to projects and assign them roles. View team
-              members' assignments and contributions.
-            </li>
-
-            <li className="py-2">
-              Leave comments on tasks to facilitate discussions. The commenting
-              system supports real-time updates, allowing for live
-              conversations.
-            </li>
-
-            <li className="py-2">
-              Show support and engagement by 'liking' projects, tasks, and
-              comments.
+              Secure registration and login with JWT access tokens, refresh tokens
+              (HTTP-only cookies), and password reset flows.
             </li>
             <li className="py-2">
-              Create and assign tags to tasks for better organization and
-              filtering. This allows for easy categorization of work (e.g.,
-              'bug', 'feature', 'design').
+              Public club site: home, events calendar/listing, gallery, featured
+              news, reviews, services, contact, and about content.
             </li>
             <li className="py-2">
-              Receive instant notifications for important events such as new
-              comments, task assignments, and mentions.
+              &quot;Play&quot; flow: browse sessions, register, checkout, and Stripe
+              payment success/cancel handling.
             </li>
             <li className="py-2">
-              A comprehensive audit trail logs all major actions, such as
-              project creation, task updates, and user registrations, providing
-              a clear history of events.
+              Shop: product listing and detail pages, checkout, and Stripe-powered
+              payments for merchandise.
             </li>
             <li className="py-2">
-              A powerful search engine to quickly find projects, tasks, or
-              comments based on keywords.
+              Role-based areas: protected user profile; admin/super_admin dashboard
+              for managing users, events, play slots, registrations, rewards,
+              products, orders, payments, invoices, and more.
             </li>
             <li className="py-2">
-              Key parts of the application, like comments, update in real-time
-              across all users, thanks to GraphQL Subscriptions.
+              Content and comms: homepage banners, gallery (photos/videos), news,
+              newsletter signups, contact messages, and service request workflows.
+            </li>
+            <li className="py-2">
+              Operational tooling: payment stats and charts (Recharts), activity
+              logs, cron-related endpoints, Stripe webhooks, and automated refund
+              processing for completed events.
+            </li>
+            <li className="py-2">
+              Media uploads via Multer with Cloudinary integration for hosted assets.
+            </li>
+            <li className="py-2">
+              Email delivery via Nodemailer and Resend for transactional messages.
             </li>
           </ul>
         </div>
       ),
+
       technologies: [
         "HTML5",
-        "CSS3",
-        "TailwindCSS",
+        "Tailwind CSS",
+        "TypeScript",
         "React",
-        "TypeScript",
+        "Vite",
+        "React Router",
+        "Redux Toolkit",
+        "Recharts",
+        "react-big-calendar",
+        "date-fns",
+        "@stripe/stripe-js",
+        "@emailjs/browser",
         "Node.js",
-        "GraphQL",
-        "Apollo Server",
-        "Apollo Client",
-        "Apollo Query",
-        "Apollo Mutation",
-        "Apollo resolver",
+        "Express.js",
         "MySQL",
-        "Postman",
-      ],
-      image: import.meta.env.VITE_PROJECTTRACKERAPP_IMAGE ?? "",
-      liveUrl: import.meta.env.VITE_PROJECTTRACKERAPP_LIVE_URL ?? "",
-      githubUrl: import.meta.env.VITE_PROJECTTRACKERAPP_GITHUB ?? "",
-      category: "Full-stack",
-    },
-    {
-      id: 4,
-      title: "NewsStudios - Modern News & Media Management Platform",
-      description: (
-        <div>
-          <p className="py-2">
-            NewsStudios is a full-stack, modern news and media management
-            platform designed to deliver a high-quality reading experience while
-            providing a comprehensive and intuitive content management system
-            for administrators. Built with the latest web technologies,
-            including Next.js 14 and React, this project serves as a powerful
-            foundation for online magazines, news portals, and digital content
-            hubs.
-          </p>
-
-          <p className="py-2">The application is split into two main parts:</p>
-          <ul className="list-disc ml-6 mt-2">
-            <li className="py-2">
-              A public-facing front-end that offers a visually appealing and
-              responsive interface for readers. It features a dynamic home page
-              with video carousels and article grids, dedicated pages for
-              articles, and robust discovery tools like category/tag filtering
-              and advanced search. User engagement is encouraged through
-              features like comments and likes. (UI)
-            </li>
-            <li>
-              A secure admin dashboard that empowers content creators and
-              administrators with full control over the platform's content. It
-              includes tools for managing articles, categories, authors, users,
-              and media (photos and videos). The dashboard also provides
-              analytics to track user engagement and content performance.
-            </li>
-          </ul>
-          <p className="mt-4 font-semibold">Key features :</p>
-
-          <ul className="list-disc ml-6 mt-2">
-            <li className="py-2">
-              Front-End: It offers a visually appealing and responsive interface
-              for readers, authentication, profile management, role-based
-              access, video carousel, featured/trending articles, rich media
-              content, comments/likes, search/filters, responsive UI.{" "}
-            </li>
-            <li className="py-2">
-              Admin Dashboard: It empowers content creators and administrators
-              with full control over the platform's content, real-time stats,
-              trending articles, activity feed, CRUD for content/users,
-              pagination, search/sort, bulk operations, Cloudinary uploads.
-            </li>
-          </ul>
-        </div>
-      ),
-      technologies: [
-        "HTML5",
-        "TailwindCSS",
-        "TypeScript",
-        "React.js",
-        "Next.js",
+        "mysql2",
+        "JWT",
+        "bcryptjs",
+        "cookie-parser",
+        "Zod",
+        "Multer",
         "Cloudinary",
-        "MySQL",
-        "Postman",
+        "Stripe",
+        "Nodemailer",
+        "Resend",
+        "tsx",
       ],
-      image: NewsStudioAppImage,
-      liveUrl: import.meta.env.VITE_NEWSSTUDIOAPP_LIVE_URL ?? "",
-      githubUrl: import.meta.env.VITE_NEWSSTUDIOAPP_GITHUB ?? "",
+
+      image: (import.meta.env.VITE_CHIBIBADMINTON_IMAGE ?? "").trim() || ChibiLogo,
+      imageFit: "contain",
+      liveUrl: import.meta.env.VITE_CHIBIBADMINTON_LIVE_URL ?? "",
+      githubUrl: import.meta.env.VITE_CHIBIBADMINTON_GITHUB ?? "",
       category: "Full-stack",
     },
+    // {
+    //   id: 3,
+    //   title: "Project Tracker Application",
+    //   description: (
+    //     <div>
+    //       <p className="py-2">
+    //         Project Tracker is a full-stack application designed to bring
+    //         clarity and efficiency to project management. It provides a
+    //         centralized platform for teams to organize their work, communicate
+    //         effectively, and keep a detailed record of their progress. From
+    //         creating projects and assigning tasks to real-time discussions and
+    //         notifications, Project Tracker is built to support a collaborative
+    //         and productive workflow.
+    //       </p>
+    //       <p className="py-2">
+    //         At its core, the application allows users to manage projects and
+    //         tasks with ease. You can define project goals, set deadlines, and
+    //         break down the work into manageable tasks. Each task can be assigned
+    //         to team members, given a priority, and tagged for easy
+    //         categorization.
+    //       </p>
+
+    //       <p className="py-2">
+    //         Collaboration is facilitated through a rich commenting system, where
+    //         team members can discuss task details, ask questions, and provide
+    //         updates. The system supports real-time notifications, ensuring that
+    //         you never miss an important conversation or a critical update. Users
+    //         can also 'like' projects, tasks, and comments to show appreciation
+    //         and engagement.
+    //       </p>
+
+    //       <p className="py-2">
+    //         For transparency and accountability, Project Tracker includes a
+    //         comprehensive activity logging system that records every significant
+    //         action taken within the application. A powerful search feature
+    //         allows you to quickly find information across all your projects,
+    //         tasks, and comments.
+    //       </p>
+
+    //       <p className="py-2">
+    //         With secure user authentication, role-based permissions, and a
+    //         clean, intuitive interface, Project Tracker is an ideal solution for
+    //         development teams, project managers, and any group looking to
+    //         improve their project management processes.
+    //       </p>
+
+    //       <p className="py-2">Key Features:</p>
+
+    //       <ul className="list-disc ml-6 mt-2">
+    //         <li className="py-2">
+    //           Secure user registration and login using JWT. Role-based access
+    //           control (Admin, Member) to manage permissions for different
+    //           actions
+    //         </li>
+
+    //         <li className="py-2">
+    //           Create, update, and delete projects. Track project status,
+    //           deadlines, and view all associated tasks and team members in a
+    //           centralized dashboard.
+    //         </li>
+
+    //         <li className="py-2">
+    //           Add tasks to projects, assign them to team members, set priorities
+    //           and due dates. The system tracks the status of each task from 'To
+    //           Do' to 'Done'
+    //         </li>
+
+    //         <li className="py-2">
+    //           Invite members to projects and assign them roles. View team
+    //           members' assignments and contributions.
+    //         </li>
+
+    //         <li className="py-2">
+    //           Leave comments on tasks to facilitate discussions. The commenting
+    //           system supports real-time updates, allowing for live
+    //           conversations.
+    //         </li>
+
+    //         <li className="py-2">
+    //           Show support and engagement by 'liking' projects, tasks, and
+    //           comments.
+    //         </li>
+    //         <li className="py-2">
+    //           Create and assign tags to tasks for better organization and
+    //           filtering. This allows for easy categorization of work (e.g.,
+    //           'bug', 'feature', 'design').
+    //         </li>
+    //         <li className="py-2">
+    //           Receive instant notifications for important events such as new
+    //           comments, task assignments, and mentions.
+    //         </li>
+    //         <li className="py-2">
+    //           A comprehensive audit trail logs all major actions, such as
+    //           project creation, task updates, and user registrations, providing
+    //           a clear history of events.
+    //         </li>
+    //         <li className="py-2">
+    //           A powerful search engine to quickly find projects, tasks, or
+    //           comments based on keywords.
+    //         </li>
+    //         <li className="py-2">
+    //           Key parts of the application, like comments, update in real-time
+    //           across all users, thanks to GraphQL Subscriptions.
+    //         </li>
+    //       </ul>
+    //     </div>
+    //   ),
+    //   technologies: [
+    //     "HTML5",
+    //     "CSS3",
+    //     "TailwindCSS",
+    //     "React",
+    //     "TypeScript",
+    //     "Node.js",
+    //     "GraphQL",
+    //     "Apollo Server",
+    //     "Apollo Client",
+    //     "Apollo Query",
+    //     "Apollo Mutation",
+    //     "Apollo resolver",
+    //     "MySQL",
+    //     "Postman",
+    //   ],
+    //   image: import.meta.env.VITE_PROJECTTRACKERAPP_IMAGE ?? "",
+    //   liveUrl: import.meta.env.VITE_PROJECTTRACKERAPP_LIVE_URL ?? "",
+    //   githubUrl: import.meta.env.VITE_PROJECTTRACKERAPP_GITHUB ?? "",
+    //   category: "Full-stack",
+    // },
+    // {
+    //   id: 4,
+    //   title: "NewsStudios - Modern News & Media Management Platform",
+    //   description: (
+    //     <div>
+    //       <p className="py-2">
+    //         NewsStudios is a full-stack, modern news and media management
+    //         platform designed to deliver a high-quality reading experience while
+    //         providing a comprehensive and intuitive content management system
+    //         for administrators. Built with the latest web technologies,
+    //         including Next.js 14 and React, this project serves as a powerful
+    //         foundation for online magazines, news portals, and digital content
+    //         hubs.
+    //       </p>
+
+    //       <p className="py-2">The application is split into two main parts:</p>
+    //       <ul className="list-disc ml-6 mt-2">
+    //         <li className="py-2">
+    //           A public-facing front-end that offers a visually appealing and
+    //           responsive interface for readers. It features a dynamic home page
+    //           with video carousels and article grids, dedicated pages for
+    //           articles, and robust discovery tools like category/tag filtering
+    //           and advanced search. User engagement is encouraged through
+    //           features like comments and likes. (UI)
+    //         </li>
+    //         <li>
+    //           A secure admin dashboard that empowers content creators and
+    //           administrators with full control over the platform's content. It
+    //           includes tools for managing articles, categories, authors, users,
+    //           and media (photos and videos). The dashboard also provides
+    //           analytics to track user engagement and content performance.
+    //         </li>
+    //       </ul>
+    //       <p className="mt-4 font-semibold">Key features :</p>
+
+    //       <ul className="list-disc ml-6 mt-2">
+    //         <li className="py-2">
+    //           Front-End: It offers a visually appealing and responsive interface
+    //           for readers, authentication, profile management, role-based
+    //           access, video carousel, featured/trending articles, rich media
+    //           content, comments/likes, search/filters, responsive UI.{" "}
+    //         </li>
+    //         <li className="py-2">
+    //           Admin Dashboard: It empowers content creators and administrators
+    //           with full control over the platform's content, real-time stats,
+    //           trending articles, activity feed, CRUD for content/users,
+    //           pagination, search/sort, bulk operations, Cloudinary uploads.
+    //         </li>
+    //       </ul>
+    //     </div>
+    //   ),
+    //   technologies: [
+    //     "HTML5",
+    //     "TailwindCSS",
+    //     "TypeScript",
+    //     "React.js",
+    //     "Next.js",
+    //     "Cloudinary",
+    //     "MySQL",
+    //     "Postman",
+    //   ],
+    //   image: NewsStudioAppImage,
+    //   liveUrl: import.meta.env.VITE_NEWSSTUDIOAPP_LIVE_URL ?? "",
+    //   githubUrl: import.meta.env.VITE_NEWSSTUDIOAPP_GITHUB ?? "",
+    //   category: "Full-stack",
+    // },
     {
       id: 5,
       title: "Countries Explorer Application",

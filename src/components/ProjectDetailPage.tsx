@@ -93,11 +93,17 @@ const ProjectDetailPage: React.FC = () => {
 
       {/* Project image */}
       {project.image && (
-        <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
+        <div
+          className={`mb-8 rounded-lg overflow-hidden shadow-lg ${
+            project.imageFit === "contain" ? "bg-gray-50 dark:bg-gray-900" : ""
+          }`}
+        >
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-96 object-cover"
+            className={`w-full h-96 ${
+              project.imageFit === "contain" ? "object-contain p-4" : "object-cover"
+            }`}
           />
         </div>
       )}

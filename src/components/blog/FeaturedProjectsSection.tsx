@@ -31,11 +31,21 @@ const FeaturedProjectsSection: React.FC<FeaturedProjectsSectionProps> = ({ proje
             >
               <Link to={`/projects/${project.id}`} className="block">
                 {project.image && (
-                  <div className="h-48 overflow-hidden">
+                  <div
+                    className={`h-48 overflow-hidden border-b-2 border-gray-200 dark:border-gray-700 ${
+                      project.imageFit === "contain"
+                        ? "bg-gray-50 dark:bg-gray-900"
+                        : ""
+                    }`}
+                  >
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 border-b-2 border-gray-200 dark:border-gray-700"
+                      className={`w-full h-full transition-transform duration-300 ${
+                        project.imageFit === "contain"
+                          ? "object-contain p-3"
+                          : "object-cover hover:scale-105"
+                      }`}
                     />
                   </div>
                 )}

@@ -21,6 +21,7 @@ export interface Project {
   description: ReactNode;
   technologies: string[];
   image?: string;
+  imageFit?: "cover" | "contain";
   liveUrl?: string;
   githubUrl?: string;
   category?: "Frontend" | "Full-stack";
