@@ -38,8 +38,15 @@ const ProjectDetailPage: React.FC = () => {
     return (
       // Loading state wrapper
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center">
-          <p className="text-gray-600 dark:text-gray-300">Loading project...</p>
+        <div className="min-h-[220px] flex flex-col items-center justify-center text-center">
+          <div
+            className="h-8 w-8 rounded-full border-2 border-blue-200 dark:border-blue-900 border-t-blue-600 dark:border-t-blue-400 animate-spin"
+            role="status"
+            aria-label="Loading project details"
+          />
+          <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-300">
+            Loading project details...
+          </p>
         </div>
       </div>
     );
@@ -110,12 +117,12 @@ const ProjectDetailPage: React.FC = () => {
 
       {/* Project header */}
       <div className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
           {project.title}
         </h1>
-        <span className="text-xl text-gray-600 dark:text-gray-300 text-justify">
+        <div className="text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300 text-justify [&_p]:text-base [&_p]:sm:text-lg [&_li]:text-base [&_li]:sm:text-lg">
           {project.description}
-        </span>
+        </div>
       </div>
 
       {/* Technologies */}

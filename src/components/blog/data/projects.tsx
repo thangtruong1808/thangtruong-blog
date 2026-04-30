@@ -60,6 +60,48 @@ export const fetchProjects = async (): Promise<Project[]> => {
               Tracking of product views and other user interactions.
             </li>
           </ul>
+
+          <p className="mt-4 font-semibold">Deployment and AWS services:</p>
+          <ul className="list-disc ml-6 mt-2">
+            <li className="py-2">
+              Amazon VPC provides network isolation for the production
+              infrastructure.
+            </li>
+            <li className="py-2">
+              Security Group rules control inbound access (SSH on 22 and app/API
+              traffic) for secure connectivity.
+            </li>
+            <li className="py-2">
+              Amazon EC2 (Ubuntu) runs the Dockerized frontend and backend
+              services.
+            </li>
+            <li className="py-2">
+              Amazon EBS is used as persistent root storage for the EC2
+              instance.
+            </li>
+            <li className="py-2">
+              Domain + DNS routing serves the API via subdomain
+
+            </li>
+            <li className="py-2">
+              AWS Lambda processes Stripe webhook events serverlessly.
+            </li>
+            <li className="py-2">
+              Amazon API Gateway (HTTP API) exposes POST /stripe/webhook and invokes Lambda.
+            </li>
+            <li className="py-2">
+              Amazon S3 stores media assets (product images/videos and static
+              asset links used by the app).
+            </li>
+            <li className="py-2">
+              Amazon CloudWatch Logs captures Lambda/API logs for
+              troubleshooting and monitoring.
+            </li>
+            <li className="py-2">
+              Amazon CloudWatch Alarms are configured for EC2 operational health
+              (CPU, memory/RAM, and disk usage) to alert on resource pressure.
+            </li>
+          </ul>
         </div>
       ),
 
@@ -81,6 +123,17 @@ export const fetchProjects = async (): Promise<Project[]> => {
         "Sharp",
         "Nodemailer",
         "PDFKit",
+        "Docker",
+        "AWS VPC",
+        "AWS EC2",
+        "AWS Security Groups",
+        "AWS EBS",
+        "AWS Lambda",
+        "AWS API Gateway",
+        "Domain + DNS (api.badmintonecommerce.store)",
+        "AWS CloudWatch Logs",
+        "AWS CloudWatch Alarms",
+        "Custom Domain (www.badmintonecommerce.store)",
       ],
       image: import.meta.env.VITE_ECOMMERCE_BADMINTONSTORES_IMAGE ?? "",
       liveUrl: import.meta.env.VITE_ECOMMERCE_BADMINTONSTORES_LIVE_URL ?? "",
