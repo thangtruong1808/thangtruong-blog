@@ -8,7 +8,7 @@ Personal site for Thang Truong, a software developer (frontend, backend, full-st
 - Tailwind CSS 3, with light and dark themes driven by CSS variables
 - Vite 7
 - React Router 7
-- EmailJS for the contact form
+- Web3Forms for the contact form (emails land in your Gmail)
 - Self-hosted Inter (variable font)
 
 ## Pages
@@ -42,7 +42,19 @@ npm run dev
 
 The dev server runs at `http://localhost:5173`.
 
-The contact form and profile links read a local `.env`. The three EmailJS keys are required for the form; the rest are optional:
+The contact form and profile links read a local `.env`. Copy `.env.example` to `.env`, then fill in values.
+
+For the contact form (Web3Forms free plan is **client-side only**):
+
+1. Create an access key at [web3forms.com](https://web3forms.com) with the Gmail address that should receive messages.
+2. In local `.env`, set:
+   - `VITE_WEB3FORMS_ACCESS_KEY`
+   - `VITE_WEB3FORMS_FROM_NAME=thang-truong.blog`
+3. Restart `npm run dev`.
+4. On Vercel → Project Settings → Environment Variables:
+   - Add `VITE_WEB3FORMS_ACCESS_KEY` and `VITE_WEB3FORMS_FROM_NAME`.
+   - Set the type to **Config** (not Sensitive/Encrypted). Vite needs the `VITE_` prefix, and Web3Forms documents that the access key may be public in the browser.
+   - Redeploy after saving.
 
 ```
 VITE_AUTHOR_EMAIL=
@@ -50,9 +62,8 @@ VITE_PHONE=
 VITE_GITHUB_URL=
 VITE_LINKEDIN_URL=
 VITE_FEATURED_VIDEO_URL=
-VITE_EMAILJS_SERVICE_ID=
-VITE_EMAILJS_TEMPLATE_ID=
-VITE_EMAILJS_PUBLIC_KEY=
+VITE_WEB3FORMS_ACCESS_KEY=
+VITE_WEB3FORMS_FROM_NAME=thang-truong.blog
 ```
 
 Project live URLs, GitHub links and images use `VITE_*` variables read in `src/data/projects.ts`.

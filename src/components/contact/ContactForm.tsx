@@ -1,4 +1,4 @@
-// Purpose: Contact form with inline validation, spam honeypot and EmailJS delivery.
+// Purpose: Contact form with inline validation, spam honeypot and Web3Forms delivery (client-side).
 // Author: Thang Truong
 // Date: 2026-10-18
 import React, { useRef, useState } from "react";
@@ -16,6 +16,8 @@ import {
 } from "./formValidation";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 const ContactForm: React.FC = () => {
   const [values, setValues] = useState<ContactFormValues>(emptyForm);
@@ -56,26 +58,38 @@ const ContactForm: React.FC = () => {
       return;
     }
 
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim();
+    if (!accessKey) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-      if (!serviceId || !templateId || !publicKey) throw new Error("EmailJS configuration is missing");
-
-      const { default: emailjs } = await import("@emailjs/browser");
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: values.name.trim(),
-          from_email: values.email.trim(),
+      const fromName = import.meta.env.VITE_WEB3FORMS_FROM_NAME?.trim() || "thang-truong.blog";
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: values.name.trim(),
+          email: values.email.trim(),
           subject: values.subject.trim(),
           message: values.message.trim(),
-          to_name: profile.name,
-        },
-        publicKey
-      );
+          from_name: fromName,
+          replyto: values.email.trim(),
+          botcheck: "",
+        }),
+      });
+
+      const result = (await response.json()) as { success?: boolean; message?: string };
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Web3Forms rejected the submission");
+      }
+
       setStatus("success");
       setValues(emptyForm);
       setTouched({});
@@ -99,7 +113,7 @@ const ContactForm: React.FC = () => {
             value={values.name}
             error={errors.name}
             autoComplete="name"
-            placeholder="Jane Smith"
+            placeholder="Your name"
             onChange={update("name")}
             onBlur={blur("name")}
           />
@@ -110,7 +124,7 @@ const ContactForm: React.FC = () => {
             value={values.email}
             error={errors.email}
             autoComplete="email"
-            placeholder="jane@company.com"
+            placeholder="you@company.com"
             onChange={update("email")}
             onBlur={blur("email")}
           />
@@ -120,7 +134,7 @@ const ContactForm: React.FC = () => {
           label="Subject"
           value={values.subject}
           error={errors.subject}
-          placeholder="Frontend role at …"
+          placeholder="What is this about?"
           onChange={update("subject")}
           onBlur={blur("subject")}
         />
@@ -130,7 +144,7 @@ const ContactForm: React.FC = () => {
           multiline
           value={values.message}
           error={errors.message}
-          placeholder="A few lines about the role or project."
+          placeholder="Share a few details about the role, project or question."
           onChange={update("message")}
           onBlur={blur("message")}
         />
@@ -139,7 +153,7 @@ const ContactForm: React.FC = () => {
           <label htmlFor="company">Company</label>
           <input
             id="company"
-            name="company"
+            name="botcheck"
             tabIndex={-1}
             autoComplete="off"
             value={honeypot}
