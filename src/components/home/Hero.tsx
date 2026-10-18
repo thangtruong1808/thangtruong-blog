@@ -75,14 +75,16 @@ const Hero: React.FC = () => (
     <Container className="relative grid gap-14 py-14 sm:py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-16 lg:py-28">
       <div>
         <div className="flex flex-wrap items-center gap-3">
-          <img
-            src={authorPhoto}
-            alt=""
-            width={44}
-            height={44}
-            className="h-11 w-11 rounded-full object-cover ring-2 ring-surface"
-            style={{ objectPosition: "50% 20%" }}
-          />
+          <span className="inline-flex h-11 w-11 shrink-0 overflow-hidden rounded-full">
+            <img
+              src={authorPhoto}
+              alt=""
+              width={44}
+              height={44}
+              className="h-full w-full object-cover"
+              style={{ objectPosition: "50% 20%" }}
+            />
+          </span>
           <Badge tone="success">
             <span className="relative flex h-2 w-2" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60 motion-reduce:hidden" />

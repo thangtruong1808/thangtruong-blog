@@ -14,7 +14,7 @@ export const skillCategories: { name: SkillCategory; description: string }[] = [
   },
   {
     name: "AI-Assisted Development",
-    description: "Using Cursor and Claude Code to accelerate development and improve code quality.",
+    description: "Using Cursor, Claude Code and Google Antigravity to accelerate development and improve code quality.",
   },
   { name: "Database", description: "Relational and document data stores." },
   { name: "Tools", description: "API testing, design and team collaboration." },
@@ -87,6 +87,7 @@ export const skills: Skill[] = [
 
   { name: "Cursor", category: "AI-Assisted Development" },
   { name: "Claude Code", category: "AI-Assisted Development" },
+  { name: "Google Antigravity", category: "AI-Assisted Development" },
   { name: "GitHub Copilot", category: "AI-Assisted Development" },
   { name: "Google Gemini", category: "AI-Assisted Development" },
   { name: "Microsoft Copilot", category: "AI-Assisted Development" },

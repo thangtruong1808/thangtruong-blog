@@ -1,179 +1,80 @@
-# 🚀 Thang Truong's Portfolio & Blog
+# Thang Truong — Portfolio
 
-A modern, responsive portfolio website and blog built with React, TypeScript, and Tailwind CSS. Showcasing my journey as a recent Computer Science graduate passionate about web development.
+Personal site for Thang Truong, a software developer (frontend, backend, full-stack and DevOps) based in Melbourne. Live at [thang-truong.blog](https://thang-truong.blog).
 
-## ✨ Features
+## Stack
 
-- **🎨 Modern Design**: Clean, responsive design with dark/light mode support
-- **📱 Fully Responsive**: Optimized for all devices and screen sizes
-- **🌙 Dark/Light Theme**: Toggle between themes with smooth transitions
-- **📝 Blog Section**: Share insights and technical articles
-- **🎓 Education Showcase**: Academic achievements and learning journey
-- **💼 Project Portfolio**: Featured projects with live demos and GitHub links
-- **🛠️ Skills Display**: Interactive skills section with proficiency levels
-- **📧 Contact Integration**: Easy ways to get in touch
-- **🚀 Open to Work**: Professional status indicator for job opportunities
+- React 19 and TypeScript
+- Tailwind CSS 3, with light and dark themes driven by CSS variables
+- Vite 7
+- React Router 7
+- EmailJS for the contact form
+- Self-hosted Inter (variable font)
 
-## 🛠️ Tech Stack
+## Pages
 
-### Frontend
+| Route | Content |
+|---|---|
+| `/` | Positioning, featured projects, skills snapshot, intro video |
+| `/about` | Story, quick facts, education and achievements |
+| `/projects` | Case studies, filterable by type and technology |
+| `/projects/:id` | Project detail |
+| `/skills` | Skills grouped by category, with cloud providers split out |
+| `/experience` | Software and other experience |
+| `/contact` | Validated contact form and direct links |
+| `/education` | Redirects to `/about#education` |
 
-- **React 18** - Modern React with hooks and functional components
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Vite** - Fast build tool and development server
-- **React Router** - Client-side routing
+Content lives in `src/data/` (`profile.ts`, `pages.ts`, `projects.ts`, `skills.ts`, `experience.ts`, `education.ts`, `about.ts`).
 
-### Development Tools
+## Requirements
 
-- **ESLint** - Code linting and formatting
-- **PostCSS** - CSS processing
-- **Git** - Version control
+- Node.js 24.22.0 or any 24.x release (see `.nvmrc`)
+- npm
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/yourusername/thangtruong-portfolio.git
-   cd thangtruong-portfolio
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173`
-
-### Build for Production
+## Setup
 
 ```bash
-npm run build
+git clone https://github.com/thangtruong1808/thangtruong-blog.git
+cd thangtruong-blog
+npm install
+npm run dev
 ```
 
-## 📁 Project Structure
+The dev server runs at `http://localhost:5173`.
+
+The contact form and profile links read a local `.env`. The three EmailJS keys are required for the form; the rest are optional:
 
 ```
-src/
-├── components/          # React components
-│   ├── About.tsx       # About page component
-│   ├── BlogPage.tsx    # Homepage and blog
-│   ├── Contact.tsx     # Contact page
-│   ├── Education.tsx   # Education showcase
-│   ├── Footer.tsx      # Footer component
-│   ├── NavBar.tsx      # Navigation bar
-│   ├── Projects.tsx    # Projects showcase
-│   ├── Skills.tsx      # Skills display
-│   └── ThemeSwitch.tsx # Theme toggle
-├── assets/             # Static assets
-├── App.tsx            # Main app component
-└── main.tsx           # Entry point
+VITE_AUTHOR_EMAIL=
+VITE_PHONE=
+VITE_GITHUB_URL=
+VITE_LINKEDIN_URL=
+VITE_FEATURED_VIDEO_URL=
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
 ```
 
-## 🎯 Key Sections
+Project live URLs, GitHub links and images use `VITE_*` variables read in `src/data/projects.ts`.
 
-### Homepage
+To show the Download CV button, add the PDF at `public/cv/Thang-Truong-CV.pdf` and rebuild.
 
-- Personal introduction with "Open to Work" status
-- Featured projects showcase
-- Skills and technologies
-- Latest blog articles
-- Academic achievements
-- Contact information
+## Scripts
 
-### Education
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check and build to `dist/` |
+| `npm run preview` | Serve the production build |
+| `npm run lint` | Run ESLint |
+| `npm run audit:lighthouse` | Lighthouse on every route: `npm run audit:lighthouse -- <baseUrl> <outDir>` |
 
-- Academic background and achievements
-- Course highlights and projects
-- Certifications and learning path
-- GPA and academic honors
+## Deployment
 
-### Projects
+Deployed on Vercel. `vercel.json` rewrites all routes to `index.html` and sets cache and security headers. The `engines` field in `package.json` selects Node 24.x.
 
-- Interactive project cards
-- Technology stack for each project
-- Live demo and GitHub links
-- Project descriptions and features
+## Contact
 
-### Skills
-
-- Categorized skills display
-- Proficiency level indicators
-- Frontend, Backend, Database, and Tools sections
-
-## 🎨 Customization
-
-### Personal Information
-
-Update the following files to customize your information:
-
-- `src/App.tsx` - Update author name and bio
-- `src/components/BlogPage.tsx` - Modify personal details and projects
-- `src/components/Education.tsx` - Update educational background
-- `src/components/Projects.tsx` - Add your own projects
-
-### Styling
-
-- Colors and themes can be customized in `tailwind.config.js`
-- Component-specific styles are in each component file
-- Global styles are in `src/index.css`
-
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-
-- 📱 Mobile devices (320px+)
-- 📱 Tablets (768px+)
-- 💻 Desktop (1024px+)
-- 🖥️ Large screens (1280px+)
-
-## 🌟 Highlights
-
-- **Recent Graduate Focus**: Designed specifically for new graduates entering the job market
-- **Professional Presentation**: Clean, modern design that impresses potential employers
-- **Easy Customization**: Simple to update with your own information and projects
-- **Performance Optimized**: Fast loading times and smooth animations
-- **SEO Friendly**: Proper meta tags and semantic HTML structure
-
-## 🤝 Contributing
-
-While this is a personal portfolio, suggestions and improvements are welcome! Feel free to:
-
-- Report bugs
-- Suggest new features
-- Submit pull requests for improvements
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 📞 Contact
-
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [your-linkedin-profile]
-- **GitHub**: [your-github-profile]
-- **Portfolio**: [your-portfolio-url]
-
----
-
-⭐ **Star this repository if you found it helpful!**
-
----
-
-_Built with ❤️ by Thang Truong_
+- Site: [thang-truong.blog/contact](https://thang-truong.blog/contact)
+- GitHub: [thangtruong1808](https://github.com/thangtruong1808)
+- LinkedIn: [thang-truong-00b245200](https://www.linkedin.com/in/thang-truong-00b245200/)

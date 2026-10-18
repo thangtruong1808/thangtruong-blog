@@ -16,7 +16,7 @@ export const profile = {
   headline: [role, ...specialties].join(" | "),
   location: "Melbourne, Australia",
   positioning:
-    "I build and ship web applications end to end: React and TypeScript front ends, Node.js and MySQL APIs, and the AWS infrastructure that runs them.",
+    "I take web products from interface to production: React and TypeScript front ends, Node.js and .NET APIs, and automated deployments on AWS, Azure and GCP.",
   intro:
     "Swinburne ICT graduate, now studying a part-time Master of Applied AI at Deakin, with an earlier career as a PHP and JavaScript developer and tester.",
   status: "Open to work",

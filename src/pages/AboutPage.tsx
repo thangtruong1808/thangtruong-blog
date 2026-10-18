@@ -40,17 +40,14 @@ const AboutPage: React.FC = () => {
             <h1 className="mt-3 text-h1 font-bold text-fg">{pages.about.title}</h1>
             <p className="mt-5 max-w-prose text-lead text-muted">{pages.about.description}</p>
           </div>
-          <div className="relative mx-auto w-56 sm:w-64 md:w-full">
-            <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg border border-accent/40" />
-            <img
-              src={authorPhoto}
-              alt={`Portrait of ${profile.name}`}
-              width={572}
-              height={466}
-              className="relative aspect-[4/5] w-full rounded-lg object-cover shadow-lift"
-              style={{ objectPosition: "50% 25%" }}
-            />
-          </div>
+          <img
+            src={authorPhoto}
+            alt={`Portrait of ${profile.name}`}
+            width={572}
+            height={466}
+            className="mx-auto aspect-[4/5] w-56 rounded-lg object-cover shadow-lift sm:w-64 md:w-full"
+            style={{ objectPosition: "50% 25%" }}
+          />
         </Container>
       </header>
 

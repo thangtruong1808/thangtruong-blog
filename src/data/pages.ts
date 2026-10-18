@@ -24,7 +24,7 @@ export const pages: Record<PageKey, PageCopy> = {
     eyebrow: "About",
     title: "Hi, I'm Thang. I build for the web, and I took the long way here.",
     description:
-      "I build web applications end to end, from React and TypeScript interfaces to Node.js APIs and automated cloud deployments. Here's how I got here and what I'm learning next.",
+      "I build web applications end to end: React and TypeScript interfaces, APIs with Express.js on Node.js and with C# on ASP.NET Core Minimal API, plus automated cloud deployments. Here's how I got here and what I'm learning next.",
     meta: `About ${profile.name}: Melbourne-based ${profile.role} with a Swinburne ICT degree, a part-time Master of Applied AI at Deakin, and full-stack projects deployed on AWS.`,
   },
   projects: {
