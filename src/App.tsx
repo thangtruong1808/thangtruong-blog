@@ -1,89 +1,37 @@
-// Purpose: Main application component with routing and layout.
+// Purpose: Route table. Home is eager for a fast first paint; other pages are code-split.
 // Author: Thang Truong
-// Date: 2025-12-21
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import BlogPage from "./components/BlogPage";
-import About from "./components/About";
-import Education from "./components/Education";
-import Contact from "./components/Contact";
-import ScrollButtons from "./components/ScrollButtons";
-import authorPhoto from "./assets/TT-Photo.jpg";
-import FeaturedProjectsPage from "./components/FeaturedProjectsPage";
-import ProjectDetailPage from "./components/ProjectDetailPage";
-import SkillsPage from "./components/SkillsPage";
-import Experience from "./components/Experience";
+// Date: 2026-10-18
+import { lazy } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import HomePage from "./pages/HomePage";
 
-/**
- * Updates document title based on current route.
- */
-const DocumentTitle: React.FC = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Skip title update for project detail pages - they set their own title
-    if (location.pathname.startsWith("/projects/") && location.pathname !== "/projects") {
-      return;
-    }
-
-    const getPageName = (pathname: string): string => {
-      if (pathname === "/" || pathname === "/home") return "Home";
-      const route = pathname.slice(1);
-      if (!route) return "Home";
-      const pageName = route.charAt(0).toUpperCase() + route.slice(1);
-      return pageName;
-    };
-
-    const pageName = getPageName(location.pathname);
-    document.title = `thang-truong.blog | ${pageName}`;
-  }, [location.pathname]);
-
-  return null;
-};
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage"));
+const SkillsPage = lazy(() => import("./pages/SkillsPage"));
+const ExperiencePage = lazy(() => import("./pages/ExperiencePage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
-  const authorInfo = {
-    authorName: "Thang Truong",
-    authorBio:
-      "Passionate front-end and full-stack developer with expertise in React.js, Next.js, GraphQL, Node.js, Express.js, MySQL, PostgreSQL, MongoDB, AWS, and modern web technologies. I specialize in creating responsive, scalable applications and sharing knowledge with the developer community.",
-    authorAvatar: authorPhoto,
-  };
-
-  const navCategories = ["Home", "About", "Projects", "Skills", "Experience", "Contact"];
-
   return (
-    // App wrapper with router
-    <Router>
-      <DocumentTitle />
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
-        <header className="sticky top-0 z-40 w-full">
-          <NavBar
-            logo="Thang Truong"
-            categories={navCategories}
-          />
-        </header>
-
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<BlogPage {...authorInfo} />} />
-            <Route path="/home" element={<BlogPage {...authorInfo} />} />
-            <Route path="/about" element={<About {...authorInfo} />} />
-            <Route path="/projects" element={<FeaturedProjectsPage />} />
-            <Route path="/projects/:id" element={<ProjectDetailPage />} />
-            <Route path="/skills" element={<SkillsPage />} />
-            <Route path="/experience" element={<Experience />} />
-            {/* Education route retained in case deep links exist; removed from nav */}
-            <Route path="/education" element={<Education />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-
-        <ScrollButtons />
-        <Footer categories={navCategories} />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="education" element={<Navigate to="/about#education" replace />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="projects/:id" element={<ProjectDetailPage />} />
+          <Route path="skills" element={<SkillsPage />} />
+          <Route path="experience" element={<ExperiencePage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

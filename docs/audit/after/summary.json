@@ -1,0 +1,134 @@
+[
+  {
+    "name": "home-mobile",
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "2.3 s",
+    "cls": "0",
+    "tbt": "10 ms",
+    "weight": "Total size was 200 KiB"
+  },
+  {
+    "name": "home-desktop",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "cls": "0.006",
+    "tbt": "0 ms",
+    "weight": "Total size was 211 KiB"
+  },
+  {
+    "name": "about-mobile",
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "2.2 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 156 KiB"
+  },
+  {
+    "name": "about-desktop",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 156 KiB"
+  },
+  {
+    "name": "projects-mobile",
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "2.2 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 213 KiB"
+  },
+  {
+    "name": "projects-desktop",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 213 KiB"
+  },
+  {
+    "name": "skills-mobile",
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "2.2 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 145 KiB"
+  },
+  {
+    "name": "skills-desktop",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 145 KiB"
+  },
+  {
+    "name": "experience-mobile",
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "2.2 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 147 KiB"
+  },
+  {
+    "name": "experience-desktop",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 147 KiB"
+  },
+  {
+    "name": "contact-mobile",
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "2.2 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 147 KiB"
+  },
+  {
+    "name": "contact-desktop",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "lcp": "0.5 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "weight": "Total size was 147 KiB"
+  }
+]

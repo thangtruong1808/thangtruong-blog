@@ -1,13 +1,72 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>thang-truong.blog | Home</title>
+    <title>Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps</title>
+    <meta
+      name="description"
+      content="Thang Truong, Software Developer (FrontEnd, BackEnd, FullStack, DevOps) in Melbourne. I build and deploy full-stack web apps with React, TypeScript, Node.js and AWS. Available immediately."
+    />
+    <meta name="author" content="Thang Truong" />
+    <link rel="canonical" href="https://thang-truong.blog/" />
+    <meta name="theme-color" content="#fafaf9" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Thang Truong" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:title" content="Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps" />
+    <meta
+      property="og:description"
+      content="Software Developer in Melbourne: React, TypeScript, Node.js, AWS and DevOps. Australian citizen, available immediately. Case studies, skills and experience."
+    />
+    <meta property="og:url" content="https://thang-truong.blog/" />
+    <meta property="og:image" content="https://thang-truong.blog/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thang Truong, Software Developer: FrontEnd, BackEnd, FullStack, DevOps. Melbourne." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps" />
+    <meta
+      name="twitter:description"
+      content="Software Developer in Melbourne: React, TypeScript, Node.js, AWS and DevOps. Available immediately."
+    />
+    <meta name="twitter:image" content="https://thang-truong.blog/og-image.png" />
+
+    <script>
+      // Applies the saved or OS theme before first paint to avoid a light/dark flash.
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var root = document.documentElement;
+          root.classList.toggle("dark", dark);
+          root.style.colorScheme = dark ? "dark" : "light";
+          if (dark) document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0c0a09");
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Thang Truong",
+        "jobTitle": "Software Developer",
+        "url": "https://thang-truong.blog/",
+        "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" },
+        "alumniOf": "Swinburne University of Technology",
+        "sameAs": ["https://github.com/thangtruong1808", "https://www.linkedin.com/in/thang-truong-00b245200/"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>This site needs JavaScript. You can reach Thang Truong on LinkedIn or GitHub.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,0 +1,11 @@
+{
+  "name": "Thang Truong — Software Developer",
+  "short_name": "Thang Truong",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ],
+  "theme_color": "#1c1917",
+  "background_color": "#fafaf9",
+  "display": "browser"
+}
