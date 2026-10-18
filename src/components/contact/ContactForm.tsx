@@ -134,7 +134,7 @@ const ContactForm: React.FC = () => {
           label="Subject"
           value={values.subject}
           error={errors.subject}
-          placeholder="What is this about?"
+          placeholder="Please enter your subject here."
           onChange={update("subject")}
           onBlur={blur("subject")}
         />
@@ -144,7 +144,7 @@ const ContactForm: React.FC = () => {
           multiline
           value={values.message}
           error={errors.message}
-          placeholder="Share a few details about the role, project or question."
+          placeholder="Please enter your message here."
           onChange={update("message")}
           onBlur={blur("message")}
         />
