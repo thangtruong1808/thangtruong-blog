@@ -8,6 +8,9 @@ import SouthernCrossBurgersLogo from "../assets/SouthernCrossBurgersLogo.png";
 
 const env = import.meta.env;
 
+/** Public URLs: prefer VITE_* when set, otherwise fall back so production still shows Live/Code without Vercel env. */
+const url = (value: string | undefined, fallback: string) => (value ?? "").trim() || fallback;
+
 const allProjects: Project[] = [
   {
     id: 2,
@@ -69,8 +72,8 @@ const allProjects: Project[] = [
     type: "Full-stack",
     image: (env.VITE_SHUTTLESYNC_IMAGE ?? "").trim() || "https://shuttlesync.space/icon-512.png",
     imageFit: "contain",
-    liveUrl: env.VITE_SHUTTLESYNC_LIVE_URL ?? "",
-    githubUrl: env.VITE_SHUTTLESYNC_GITHUB ?? "",
+    liveUrl: url(env.VITE_SHUTTLESYNC_LIVE_URL, "https://shuttlesync.space"),
+    githubUrl: url(env.VITE_SHUTTLESYNC_GITHUB, "https://github.com/thangtruong1808/shuttle-sync-dotnet-react"),
     featured: true,
     published: true,
   },
@@ -140,8 +143,8 @@ const allProjects: Project[] = [
     type: "Full-stack",
     image: BadmintonStoresLogo,
     imageFit: "contain",
-    liveUrl: env.VITE_ECOMMERCE_BADMINTONSTORES_LIVE_URL ?? "",
-    githubUrl: env.VITE_ECOMMERCE_BADMINTONSTORES_GITHUB ?? "",
+    liveUrl: url(env.VITE_ECOMMERCE_BADMINTONSTORES_LIVE_URL, "https://www.badmintonecommerce.store/"),
+    githubUrl: url(env.VITE_ECOMMERCE_BADMINTONSTORES_GITHUB, "https://github.com/thangtruong1808/Ecommerce_mysql_db"),
     featured: true,
     published: true,
   },
@@ -199,8 +202,11 @@ const allProjects: Project[] = [
     image: (env.VITE_SOUTHERNCROSSBURGERS_IMAGE ?? "").trim() || SouthernCrossBurgersLogo,
     imageFit: "contain",
     imageBg: "dark",
-    liveUrl: env.VITE_SOUTHERNCROSSBURGERS_LIVE_URL ?? "",
-    githubUrl: env.VITE_SOUTHERNCROSSBURGERS_GITHUB ?? "",
+    liveUrl: url(env.VITE_SOUTHERNCROSSBURGERS_LIVE_URL, "http://5.183.32.74:8090/"),
+    githubUrl: url(
+      env.VITE_SOUTHERNCROSSBURGERS_GITHUB,
+      "https://github.com/thangtruong1808/fastfood-onlineorder-app"
+    ),
     featured: true,
     published: true,
   },
@@ -243,8 +249,8 @@ const allProjects: Project[] = [
     type: "Frontend",
     image: CountriesExplorerImage,
     imageFit: "cover",
-    liveUrl: env.VITE_COUNTRIESEXPLORERAPP_LIVE_URL ?? "",
-    githubUrl: env.VITE_COUNTRIESEXPLORERAPP_GITHUB ?? "",
+    liveUrl: url(env.VITE_COUNTRIESEXPLORERAPP_LIVE_URL, "https://countries-explorer-eight.vercel.app/"),
+    githubUrl: url(env.VITE_COUNTRIESEXPLORERAPP_GITHUB, "https://github.com/thangtruong1808/Countries-Explorer"),
     featured: true,
     published: true,
   },
