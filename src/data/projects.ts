@@ -3,13 +3,77 @@
 // Date: 2026-10-18
 import type { Project } from "./types";
 import BadmintonStoresLogo from "../assets/BadmintonStoresLogo.webp";
-import ChibiLogo from "../assets/ChibiLogo.webp";
 import CountriesExplorerImage from "../assets/CountriesExplorer2.webp";
-import NewsStudioImage from "../assets/NEWSSTUDIOAPP_IMAGE.jpg";
+import SouthernCrossBurgersLogo from "../assets/SouthernCrossBurgersLogo.png";
 
 const env = import.meta.env;
 
 const allProjects: Project[] = [
+  {
+    id: 2,
+    title: "ShuttleSync — Court Booking Platform",
+    tagline:
+      "AI-powered badminton court booking: holds, Stripe checkout, reward points, and a staff dashboard on ASP.NET Core.",
+    overview:
+      "ShuttleSync is a badminton booking platform for clubs that sell courts, run drop-in socials, and take card payments in one place. Players see which courts are free, hold a weekly time, and pay with Stripe, a promotion code, or reward points. Each venue keeps its own hours, weekday and weekend rate windows, closures, and social sessions. Staff run the club from a dashboard; Court Agent (Gemini) books through the same server-side services as the HTTP API.",
+    problem:
+      "Clubs juggle court availability, multi-week holds, social sessions, pricing windows, refunds, and payments across separate tools. Players need one place to find a free court, hold it, and pay.",
+    role: "[ROLE] e.g. Solo developer: React SPA, ASP.NET Core Minimal API, MySQL schema, Stripe, Gemini Court Agent, and VPS deployment",
+    impact: "[METRIC] e.g. venues supported, bookings processed, or Court Agent completion rate",
+    highlights: [
+      "Court holds for 1–12 weeks with pay-now (within 24 hours) or pay-later checkout.",
+      "Pricing sliced at each rate-window boundary in the venue timezone; unpaid holds reprice when rates change.",
+      "Stripe Checkout, webhooks, refunds, promotion codes, and reward-point redemptions.",
+      "Public social sessions with waitlist, friend spots, and club incentives.",
+      "Cookie-based auth: JWT access/refresh in HTTP-only cookies, CSRF, Google and GitHub OAuth.",
+      "Staff/admin dashboard for venues, courts, rates, closures, bookings, payments, and players.",
+      "Court Agent: Gemini function calling that runs the same booking and payment services as the API (availability, quote, hold, checkout).",
+      "Cloudinary for profile photos and court images; Gemini image generation for court artwork.",
+    ],
+    architecture: [
+      "React SPA served by Nginx; same-origin `/api` reverse-proxied to ASP.NET Core so session cookies stay first-party.",
+      "ASP.NET Core (.NET 10) Minimal APIs own booking rules, pricing, holds, and payments; Dapper + MySqlConnector against MySQL 8.",
+      "Stripe Checkout and webhooks for payment lifecycle; refunds and rate-balance top-ups when venue rates change.",
+      "Court Agent tools call repositories and payment services in-process (not over public HTTP), with the same business errors as the API.",
+      "Production: Ubuntu VPS, Nginx + Certbot, Docker Compose for the API, MySQL on the host, UFW limited to SSH/HTTP/HTTPS.",
+    ],
+    challenges: [
+      "[CHALLENGE] e.g. Repricing unpaid holds and balancing paid bookings when venue rate windows change",
+    ],
+    learnings: [
+      "[LEARNING] e.g. Cookie-based JWT + CSRF on a same-origin SPA/API, and grounding an AI agent in real booking tools",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "React Router",
+      "Redux Toolkit",
+      "C#",
+      "ASP.NET Core",
+      "Dapper",
+      "MySQL",
+      "JWT",
+      "Stripe",
+      "Google OAuth",
+      "GitHub OAuth",
+      "Gemini",
+      "Cloudinary",
+      "Nginx",
+      "Docker",
+      "Docker Compose",
+      "Certbot",
+      "HTML5",
+    ],
+    type: "Full-stack",
+    image: (env.VITE_SHUTTLESYNC_IMAGE ?? "").trim() || "https://shuttlesync.space/icon-512.png",
+    imageFit: "contain",
+    liveUrl: env.VITE_SHUTTLESYNC_LIVE_URL ?? "",
+    githubUrl: env.VITE_SHUTTLESYNC_GITHUB ?? "",
+    featured: true,
+    published: true,
+  },
   {
     id: 1,
     title: "BadmintonStores — E-commerce Platform",
@@ -83,58 +147,60 @@ const allProjects: Project[] = [
   },
   {
     id: 3,
-    title: "ChibiBadminton — Club Platform",
-    tagline: "Sessions, events, member accounts, a Stripe-powered shop and an admin dashboard for a real club.",
+    title: "Southern Cross Burgers — Online Ordering",
+    tagline:
+      "Melbourne craft fast-food ordering showcase: cart, mock/Stripe checkout, live tracking, POS and admin analytics.",
     overview:
-      "ChibiBadminton is a full-stack web application for running a badminton club online: sessions and events, member accounts, a small shop with Stripe checkout, and an admin dashboard for day-to-day operations. The frontend is a responsive React app; the backend is a REST API built with Express and TypeScript, backed by MySQL.",
+      "A frontend-only showcase for Southern Cross Burgers — a fictional Melbourne craft fast-food kitchen. Built with React 19, Vite, Tailwind CSS v4, Redux Toolkit and Recharts, it covers modern product design, WCAG AA accessibility, data visualisation, and an end-to-end Australian e-commerce flow with AUD pricing and 10% GST.",
     problem:
-      "Running a club means juggling sessions, registrations, payments, merchandise and member communication. This platform puts all of it in one place for members and admins.",
-    role: "[ROLE] e.g. Solo developer: product design, frontend, API, payments and deployment",
-    impact: "[METRIC] e.g. number of members, sessions or payments processed",
+      "Restaurant demos often skip real ordering UX: customisation, tax, delivery thresholds, payments, tracking and ops tools. This app packages those flows in one accessible frontend.",
+    role: "[ROLE] e.g. Solo developer: product UI, Redux state, payment adapters, POS mode and admin analytics",
+    impact: "[METRIC] e.g. demo personas covered, charts shipped, or Vitest coverage",
     highlights: [
-      "Secure registration and login with JWT access tokens, refresh tokens (HTTP-only cookies), and password reset flows.",
-      "Public club site: home, events calendar/listing, gallery, featured news, reviews, services, contact, and about content.",
-      "\"Play\" flow: browse sessions, register, checkout, and Stripe payment success/cancel handling.",
-      "Shop: product listing and detail pages, checkout, and Stripe-powered payments for merchandise.",
-      "Role-based areas: protected user profile; admin/super_admin dashboard for managing users, events, play slots, registrations, rewards, products, orders, payments, invoices, and more.",
-      "Content and comms: homepage banners, gallery (photos/videos), news, newsletter signups, contact messages, and service request workflows.",
-      "Operational tooling: payment stats and charts (Recharts), activity logs, cron-related endpoints, Stripe webhooks, and automated refund processing for completed events.",
-      "Media uploads via Multer with Cloudinary integration for hosted assets.",
-      "Email delivery via Nodemailer and Resend for transactional messages.",
+      "Eight connected Melbourne kitchens with AUD pricing and explicit 10% Australian GST.",
+      "Interactive item customisation: size upgrades, meal combos, add-ons, removals and kitchen notes with live pricing.",
+      "Cart drawer with upsells, free-delivery threshold, promo codes and GST breakdown.",
+      "Dual payment adapters: offline mock checkout (success, 3DS challenge, decline) and Stripe test mode via a Vercel serverless payment intent.",
+      "Animated order tracking timeline with countdown, courier status and printable Australian tax invoice.",
+      "Customer dashboard with Flame Rewards tiers, vouchers, saved addresses and 1-click reorder.",
+      "Touch-first POS register mode for iPad landscape and an admin analytics dashboard with Recharts (revenue, rush hour, category share, live kitchen gateway).",
+      "Demo persona switcher and API simulator for latency / 503 error recovery.",
     ],
-    challenges: ["[CHALLENGE] e.g. Automated refunds for completed events"],
-    learnings: ["[LEARNING]"],
+    architecture: [
+      "React 19 SPA with Vite code-splitting and a React Router data router.",
+      "Redux Toolkit slices (cart, orders, stores, auth) with RTK Query mock API and localStorage sync.",
+      "Payment adapter pattern: MockPaymentAdapter by default; StripePaymentAdapter + Vercel Node `/api/create-payment-intent` when configured.",
+      "Seed data for menu, stores, promos and analytics keeps the demo fully offline.",
+    ],
+    challenges: ["[CHALLENGE] e.g. Keeping mock and Stripe payment adapters interchangeable without forking checkout UX"],
+    learnings: ["[LEARNING] e.g. Building a WCAG AA ordering flow with live pricing and dual payment adapters"],
     technologies: [
       "React",
       "TypeScript",
-      "Tailwind CSS",
       "Vite",
-      "React Router",
+      "Tailwind CSS",
       "Redux Toolkit",
+      "RTK Query",
+      "React Router",
       "Recharts",
-      "react-big-calendar",
-      "date-fns",
+      "Radix UI",
+      "Lucide React",
+      "Sonner",
+      "Motion",
       "Stripe",
-      "EmailJS",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "JWT",
-      "bcryptjs",
-      "cookie-parser",
-      "Zod",
-      "Multer",
-      "Cloudinary",
-      "Nodemailer",
-      "Resend",
+      "Vitest",
+      "Testing Library",
+      "POS Layout",
+      "Touch UI",
+      "WCAG AA",
       "HTML5",
-      "tsx",
     ],
-    type: "Full-stack",
-    image: (env.VITE_CHIBIBADMINTON_IMAGE ?? "").trim() || ChibiLogo,
+    type: "Frontend",
+    image: (env.VITE_SOUTHERNCROSSBURGERS_IMAGE ?? "").trim() || SouthernCrossBurgersLogo,
     imageFit: "contain",
-    liveUrl: env.VITE_CHIBIBADMINTON_LIVE_URL ?? "",
-    githubUrl: env.VITE_CHIBIBADMINTON_GITHUB ?? "",
+    imageBg: "dark",
+    liveUrl: env.VITE_SOUTHERNCROSSBURGERS_LIVE_URL ?? "",
+    githubUrl: env.VITE_SOUTHERNCROSSBURGERS_GITHUB ?? "",
     featured: true,
     published: true,
   },
@@ -182,68 +248,6 @@ const allProjects: Project[] = [
     featured: true,
     published: true,
   },
-  {
-    id: 2,
-    title: "Todo List Application",
-    tagline: "Full-stack task manager with a sortable table view and a drag-and-drop Kanban board.",
-    overview:
-      "A full-stack Todo List application built with React, TypeScript, Node.js (Express), and MySQL. It provides a modern, responsive interface to manage tasks effectively, with multiple views and complete CRUD functionality.",
-    problem: "Different tasks need different views: a detailed list to audit work, and a board to see workflow at a glance.",
-    role: "[ROLE]",
-    impact: "[METRIC]",
-    highlights: [
-      "Responsive design: a clean, fully responsive UI built with Tailwind CSS.",
-      "Create, read, update, delete (CRUD): full capability to manage your tasks.",
-      "Table view: a detailed, sortable, and paginated grid of your tasks.",
-      "Kanban board: drag-and-drop interface to visualise workflow and update task status.",
-      "Status filtering on the Kanban board (e.g. Pending, In Progress, Completed).",
-      "Backend powered by Express.js and TypeScript with a RESTful API.",
-      "Persistent storage: tasks are saved in a MySQL database.",
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Express.js", "MySQL", "Postman", "HTML5"],
-    type: "Full-stack",
-    image: env.VITE_TODOLISTAPP_IMAGE ?? "",
-    imageFit: "cover",
-    liveUrl: env.VITE_TODOLISTAPP_LIVE_URL ?? "",
-    githubUrl: env.VITE_TODOLISTAPP_GITHUB ?? "",
-    published: true,
-  },
-  {
-    id: 4,
-    title: "NewsStudios — News & Media Platform",
-    tagline: "Next.js news platform with a reader front-end and a full admin dashboard.",
-    overview:
-      "A full-stack news and media management platform with a public reader experience and a content management dashboard, built with Next.js 14 and React.",
-    highlights: [
-      "Front-end: responsive reader UI, authentication, profile management, role-based access, video carousel, featured/trending articles, comments/likes, search and filters.",
-      "Admin dashboard: real-time stats, trending articles, activity feed, CRUD for content and users, pagination, search/sort, bulk operations, Cloudinary uploads.",
-    ],
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Cloudinary", "MySQL", "Postman"],
-    type: "Full-stack",
-    image: NewsStudioImage,
-    liveUrl: env.VITE_NEWSSTUDIOAPP_LIVE_URL ?? "",
-    githubUrl: env.VITE_NEWSSTUDIOAPP_GITHUB ?? "",
-    published: false,
-  },
-  {
-    id: 6,
-    title: "Project Tracker",
-    tagline: "Collaborative project management with GraphQL subscriptions for real-time comments.",
-    overview:
-      "A full-stack project management application for organising projects and tasks, real-time discussion, notifications and activity logging.",
-    highlights: [
-      "JWT authentication with role-based access control (Admin, Member).",
-      "Projects, tasks, assignments, priorities, tags and due dates.",
-      "Real-time comments and notifications via GraphQL subscriptions.",
-      "Activity audit trail and keyword search across projects, tasks and comments.",
-    ],
-    technologies: ["React", "TypeScript", "GraphQL", "Apollo Server", "Apollo Client", "Node.js", "MySQL", "Tailwind CSS"],
-    type: "Full-stack",
-    image: env.VITE_PROJECTTRACKERAPP_IMAGE ?? "",
-    liveUrl: env.VITE_PROJECTTRACKERAPP_LIVE_URL ?? "",
-    githubUrl: env.VITE_PROJECTTRACKERAPP_GITHUB ?? "",
-    published: false,
-  },
 ];
 
 export const projects: Project[] = allProjects.filter((project) => project.published);
@@ -252,6 +256,6 @@ export const featuredProjects: Project[] = projects.filter((project) => project.
 
 export const getProject = (id: number): Project | undefined => projects.find((project) => project.id === id);
 
-/** Matches "AWS" to "AWS EC2" etc. so filters and skills can use family names. */
+/** Matches "AWS" to "AWS EC2", "Redux" to "Redux Toolkit", etc. Prefer skill aliases for longer skill names. */
 export const usesTechnology = (project: Project, tech: string): boolean =>
   project.technologies.some((item) => item === tech || item.startsWith(`${tech} `));

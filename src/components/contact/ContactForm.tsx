@@ -15,7 +15,7 @@ import {
   type ContactFormValues,
 } from "./formValidation";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "error" | "misconfigured";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
@@ -24,13 +24,17 @@ const ContactForm: React.FC = () => {
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof ContactFormValues, boolean>>>({});
   const [status, setStatus] = useState<Status>("idle");
+  const [errorDetail, setErrorDetail] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
   const update = (field: keyof ContactFormValues) => (value: string) => {
     setValues((current) => ({ ...current, [field]: value }));
     if (touched[field]) setErrors((current) => ({ ...current, [field]: validateField(field, value) }));
-    if (status === "success" || status === "error") setStatus("idle");
+    if (status === "success" || status === "error" || status === "misconfigured") {
+      setStatus("idle");
+      setErrorDetail("");
+    }
   };
 
   const blur = (field: keyof ContactFormValues) => () => {
@@ -58,15 +62,20 @@ const ContactForm: React.FC = () => {
       return;
     }
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim();
+    // Vite inlines this at build time — it must exist on Vercel during `vite build`, then Redeploy.
+    const accessKey = String(import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "").trim();
     if (!accessKey) {
-      setStatus("error");
+      setStatus("misconfigured");
+      setErrorDetail(
+        "Missing VITE_WEB3FORMS_ACCESS_KEY in the production build. Add it on Vercel as Config and redeploy."
+      );
       return;
     }
 
     setStatus("submitting");
+    setErrorDetail("");
     try {
-      const fromName = import.meta.env.VITE_WEB3FORMS_FROM_NAME?.trim() || "thang-truong.blog";
+      const fromName = String(import.meta.env.VITE_WEB3FORMS_FROM_NAME ?? "").trim() || "thang-truong.blog";
       const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: {
@@ -93,8 +102,9 @@ const ContactForm: React.FC = () => {
       setStatus("success");
       setValues(emptyForm);
       setTouched({});
-    } catch {
+    } catch (error) {
       setStatus("error");
+      setErrorDetail(error instanceof Error ? error.message : "Unknown error");
     }
   };
 
@@ -178,20 +188,40 @@ const ContactForm: React.FC = () => {
               Thanks, your message is on its way. {profile.responseTime}
             </p>
           )}
-          {status === "error" && (
+          {(status === "error" || status === "misconfigured") && (
             <p className="flex items-start gap-3 rounded-md border border-danger/30 bg-danger/10 p-4 text-sm text-danger">
               <FiAlertCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
               <span>
-                Sorry, the message couldn't be sent. Please try again
-                {profile.email && (
+                {status === "misconfigured" ? (
                   <>
-                    {" "}or email me directly at{" "}
-                    <a href={`mailto:${profile.email}`} className="font-medium underline">
-                      {profile.email}
-                    </a>
+                    The contact form is not configured on this deployment yet
+                    {profile.email && (
+                      <>
+                        . Please email me directly at{" "}
+                        <a href={`mailto:${profile.email}`} className="font-medium underline">
+                          {profile.email}
+                        </a>
+                      </>
+                    )}
+                    .
+                  </>
+                ) : (
+                  <>
+                    Sorry, the message couldn't be sent. Please try again
+                    {profile.email && (
+                      <>
+                        {" "}or email me directly at{" "}
+                        <a href={`mailto:${profile.email}`} className="font-medium underline">
+                          {profile.email}
+                        </a>
+                      </>
+                    )}
+                    .
                   </>
                 )}
-                .
+                {import.meta.env.DEV && errorDetail && (
+                  <span className="mt-2 block text-xs opacity-80">{errorDetail}</span>
+                )}
               </span>
             </p>
           )}

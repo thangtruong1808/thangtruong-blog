@@ -14,12 +14,17 @@ interface ProjectImageProps {
 
 const ProjectImage: React.FC<ProjectImageProps> = ({ project, priority = false, className, zoomOnHover = false }) => {
   const contain = project.imageFit === "contain";
+  const canvas = contain
+    ? project.imageBg === "dark"
+      ? "bg-[#1c1917]"
+      : "bg-white"
+    : "bg-surface-2";
 
   return (
     <div
       className={cn(
         "relative aspect-[16/10] overflow-hidden",
-        contain ? "bg-white" : "bg-surface-2",
+        canvas,
         className
       )}
     >

@@ -1,51 +1,69 @@
-// Purpose: Read and toggle the colour theme; follows the OS until the user picks one.
+// Purpose: Read and cycle colour theme preference: light, dark, or system (OS).
 // Author: Thang Truong
 // Date: 2026-10-18
 import { useCallback, useEffect, useState } from "react";
 
-export type Theme = "light" | "dark";
+export type ThemePreference = "light" | "dark" | "system";
+export type ResolvedTheme = "light" | "dark";
 
 const STORAGE_KEY = "theme";
+const PREFERENCES: ThemePreference[] = ["light", "dark", "system"];
+
 const darkQuery = () => window.matchMedia("(prefers-color-scheme: dark)");
 
-const applyTheme = (theme: Theme) => {
+const resolveTheme = (preference: ThemePreference): ResolvedTheme =>
+  preference === "system" ? (darkQuery().matches ? "dark" : "light") : preference;
+
+const applyResolved = (resolved: ResolvedTheme) => {
   const root = document.documentElement;
-  root.classList.toggle("dark", theme === "dark");
-  root.style.colorScheme = theme;
+  root.classList.toggle("dark", resolved === "dark");
+  root.style.colorScheme = resolved;
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute("content", theme === "dark" ? "#0c0a09" : "#fafaf9");
+    ?.setAttribute("content", resolved === "dark" ? "#0c0a09" : "#fafaf9");
+};
+
+const readPreference = (): ThemePreference => {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === "light" || saved === "dark" || saved === "system") return saved;
+  return "system";
 };
 
 /**
  * The initial class is set by the inline script in index.html (no flash);
- * this hook mirrors it into React state.
+ * this hook mirrors preference + resolved theme into React state.
  */
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>(() =>
+  const [preference, setPreference] = useState<ThemePreference>(readPreference);
+  const [resolved, setResolved] = useState<ResolvedTheme>(() =>
     document.documentElement.classList.contains("dark") ? "dark" : "light"
   );
 
   useEffect(() => {
+    const next = resolveTheme(preference);
+    applyResolved(next);
+    setResolved(next);
+  }, [preference]);
+
+  useEffect(() => {
+    if (preference !== "system") return;
     const query = darkQuery();
     const onChange = (event: MediaQueryListEvent) => {
-      if (localStorage.getItem(STORAGE_KEY)) return;
-      const next: Theme = event.matches ? "dark" : "light";
-      applyTheme(next);
-      setTheme(next);
+      const next: ResolvedTheme = event.matches ? "dark" : "light";
+      applyResolved(next);
+      setResolved(next);
     };
     query.addEventListener("change", onChange);
     return () => query.removeEventListener("change", onChange);
-  }, []);
+  }, [preference]);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((current) => {
-      const next: Theme = current === "dark" ? "light" : "dark";
-      applyTheme(next);
+  const cycleTheme = useCallback(() => {
+    setPreference((current) => {
+      const next = PREFERENCES[(PREFERENCES.indexOf(current) + 1) % PREFERENCES.length];
       localStorage.setItem(STORAGE_KEY, next);
       return next;
     });
   }, []);
 
-  return { theme, toggleTheme };
+  return { preference, theme: resolved, cycleTheme };
 };

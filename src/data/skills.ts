@@ -5,7 +5,11 @@ import type { CloudProvider, Project, Skill, SkillCategory } from "./types";
 import { projects, usesTechnology } from "./projects";
 
 export const skillCategories: { name: SkillCategory; description: string }[] = [
-  { name: "Frontend", description: "Responsive, accessible interfaces and client-side state." },
+  {
+    name: "Frontend",
+    description:
+      "Product UI, state, charts and touch layouts — including iPad POS register design in Southern Cross Burgers.",
+  },
   { name: "Backend", description: "APIs, authentication, payments and server-side logic." },
   { name: "Cloud & Architecture", description: "Serverless, containers, storage and monitoring across three clouds." },
   {
@@ -36,35 +40,73 @@ const azure = (name: string): Skill => ({ name, category: "Cloud & Architecture"
 const gcp = (name: string): Skill => ({ name, category: "Cloud & Architecture", provider: "GCP" });
 const practice = (name: string): Skill => ({ name, category: "DevOps, Automation & Quality", kind: "practice" });
 
+const frontendPractice = (name: string): Skill => ({ name, category: "Frontend", kind: "practice" });
+
 export const skills: Skill[] = [
+  // Frontend — ShuttleSync, BadmintonStores, Southern Cross Burgers, Countries Explorer
   { name: "HTML5 & CSS3", category: "Frontend", aliases: ["HTML5"] },
   { name: "JavaScript", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
   { name: "React", category: "Frontend" },
-  { name: "Redux", category: "Frontend" },
+  { name: "Vite", category: "Frontend" },
+  { name: "React Router", category: "Frontend" },
+  { name: "Redux", category: "Frontend", aliases: ["Redux Toolkit"] },
+  { name: "RTK Query", category: "Frontend" },
+  { name: "Zustand", category: "Frontend" },
   { name: "Next.js", category: "Frontend" },
   { name: "Tailwind CSS", category: "Frontend" },
+  { name: "Material-UI", category: "Frontend", aliases: ["MUI"] },
+  { name: "Emotion", category: "Frontend" },
+  { name: "Axios", category: "Frontend" },
+  { name: "Apollo Client", category: "Frontend" },
+  { name: "Chart.js", category: "Frontend" },
+  { name: "Recharts", category: "Frontend" },
+  { name: "Radix UI", category: "Frontend" },
+  { name: "Lucide React", category: "Frontend" },
+  { name: "Sonner", category: "Frontend" },
+  { name: "Motion", category: "Frontend" },
+  { name: "Google Maps API", category: "Frontend" },
+  { name: "POS / Touch UI", category: "Frontend", aliases: ["POS Layout", "Touch UI"] },
+  { name: "WCAG accessibility", category: "Frontend", aliases: ["WCAG AA", "Accessibility"] },
+  frontendPractice("Touch-first POS register layouts (iPad landscape)"),
+  frontendPractice("Themeable light / dark / system UI"),
+  frontendPractice("Checkout, cart and live order-tracking flows"),
+  frontendPractice("Admin analytics dashboards with charts"),
 
+  // Backend
   { name: "Node.js", category: "Backend" },
   { name: "Express.js", category: "Backend" },
   { name: "C#", category: "Backend" },
-  { name: "ASP.NET Core Minimal API", category: "Backend" },
+  { name: "ASP.NET Core", category: "Backend", aliases: ["ASP.NET Core Minimal API"] },
+  { name: "Dapper", category: "Backend" },
   { name: "GraphQL", category: "Backend" },
   { name: "JWT auth", category: "Backend", aliases: ["JWT"] },
+  { name: "OAuth", category: "Backend", aliases: ["Google OAuth", "GitHub OAuth"] },
   { name: "Stripe", category: "Backend" },
+  { name: "Cloudinary", category: "Backend" },
+  { name: "Bcrypt", category: "Backend" },
+  { name: "Multer", category: "Backend" },
+  { name: "Sharp", category: "Backend" },
+  { name: "Nodemailer", category: "Backend" },
+  { name: "PDFKit", category: "Backend" },
 
+  // Database
   { name: "MySQL", category: "Database" },
   { name: "PostgreSQL", category: "Database" },
   { name: "MongoDB", category: "Database" },
   { name: "Firebase", category: "Database" },
 
+  // Cloud
   aws("Lambda"),
   aws("EC2"),
+  aws("EBS"),
+  aws("VPC"),
   aws("S3"),
   aws("CloudFront"),
   aws("API Gateway"),
   aws("CloudWatch"),
   aws("RDS"),
+  { name: "Security Groups", category: "Cloud & Architecture", provider: "AWS", aliases: ["AWS Security Groups"] },
   azure("Functions"),
   azure("Container Apps"),
   azure("Storage"),
@@ -74,10 +116,16 @@ export const skills: Skill[] = [
   gcp("Cloud Storage"),
   gcp("Cloud Build"),
 
+  // DevOps
   { name: "Git", category: "DevOps, Automation & Quality", aliases: ["GitHub"] },
   { name: "GitHub Actions", category: "DevOps, Automation & Quality" },
   { name: "Terraform", category: "DevOps, Automation & Quality" },
   { name: "Docker", category: "DevOps, Automation & Quality" },
+  { name: "Docker Compose", category: "DevOps, Automation & Quality" },
+  { name: "Nginx", category: "DevOps, Automation & Quality" },
+  { name: "Certbot", category: "DevOps, Automation & Quality" },
+  { name: "Vitest", category: "DevOps, Automation & Quality" },
+  { name: "Testing Library", category: "DevOps, Automation & Quality", aliases: ["React Testing Library"] },
   practice("CI/CD pipelines"),
   practice("Environment configuration"),
   practice("Automated deployments"),
@@ -85,13 +133,15 @@ export const skills: Skill[] = [
   practice("Log-driven debugging"),
   practice("Secure, maintainable code"),
 
+  // AI
   { name: "Cursor", category: "AI-Assisted Development" },
   { name: "Claude Code", category: "AI-Assisted Development" },
   { name: "Google Antigravity", category: "AI-Assisted Development" },
   { name: "GitHub Copilot", category: "AI-Assisted Development" },
-  { name: "Google Gemini", category: "AI-Assisted Development" },
+  { name: "Google Gemini", category: "AI-Assisted Development", aliases: ["Gemini"] },
   { name: "Microsoft Copilot", category: "AI-Assisted Development" },
 
+  // Tools
   { name: "Postman", category: "Tools" },
   { name: "Figma", category: "Tools" },
   { name: "MySQL Workbench", category: "Tools" },

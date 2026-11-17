@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
         id="featured"
         eyebrow="Selected work"
         title="Featured projects"
-        description="Full-stack applications I designed, built and deployed: the problem, the stack and how each one runs in production."
+        description="Full-stack platforms and frontend product UI I designed and shipped — including ordering flows, touch-first POS layouts and production cloud deployments."
         action={
           <Button to="/projects" variant="secondary" iconRight={arrow}>
             All projects
@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
         id="skills"
         eyebrow="Toolkit"
         title="What I work with"
-        description="The languages, frameworks and cloud services I build with, from the UI to the deployment pipeline."
+        description="From React product UI and POS layouts to APIs, cloud and DevOps — skills proven in the projects above."
         className="border-y border-line bg-surface-2/40"
         action={
           <Button to="/skills" variant="secondary" iconRight={arrow}>

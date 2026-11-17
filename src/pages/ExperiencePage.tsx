@@ -43,7 +43,7 @@ const ExperiencePage: React.FC = () => {
           <div className="rounded-lg border border-accent/30 bg-accent-soft/60 p-6">
             <p className="font-semibold text-fg">Recent technical work</p>
             <p className="mt-2 text-sm text-muted">
-              My latest software work is in my projects: full-stack apps built and deployed on AWS.
+              My latest software work is in my projects: full-stack apps on AWS/.NET, plus frontend product UI such as Southern Cross Burgers with an iPad POS layout.
             </p>
             <div className="mt-4 flex flex-col gap-2">
               <Button to="/projects" iconRight={arrow}>

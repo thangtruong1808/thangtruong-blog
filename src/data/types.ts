@@ -22,6 +22,8 @@ export interface Project {
   year?: string;
   image?: string;
   imageFit?: "cover" | "contain";
+  /** Thumbnail canvas behind contain logos; dark suits brand marks shot on dark UI. */
+  imageBg?: "light" | "dark";
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;

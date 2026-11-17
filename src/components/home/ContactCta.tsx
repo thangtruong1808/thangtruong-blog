@@ -16,7 +16,7 @@ const ContactCta: React.FC = () => (
         <div aria-hidden="true" className="absolute -right-24 -top-28 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
         <div className="relative max-w-2xl">
           <h2 id="cta-title" className="text-h2 font-bold text-fg">
-            Hiring a frontend, backend, full-stack or DevOps developer?
+            Hiring a frontend, backend, full-stack, DevOps, Full-Stack AI or ML engineer?
           </h2>
           <p className="mt-3 text-muted">
             {profile.availability} {profile.responseTime}

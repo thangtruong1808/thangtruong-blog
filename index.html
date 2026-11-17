@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps</title>
+    <title>Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps | Full-Stack AI Engineer | ML Engineer</title>
     <meta
       name="description"
-      content="Thang Truong, Software Developer (FrontEnd, BackEnd, FullStack, DevOps) in Melbourne. I build and deploy full-stack web apps with React, TypeScript, Node.js and AWS. Available immediately."
+      content="Thang Truong, Software Developer in Melbourne: FrontEnd, BackEnd, FullStack, DevOps, Full-Stack AI Engineer and ML Engineer. Full-stack web apps with React, TypeScript, Node.js and AWS. Available immediately."
     />
     <meta name="author" content="Thang Truong" />
     <link rel="canonical" href="https://thang-truong.blog/" />
@@ -20,30 +20,36 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Thang Truong" />
     <meta property="og:locale" content="en_AU" />
-    <meta property="og:title" content="Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps" />
+    <meta property="og:title" content="Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps | Full-Stack AI Engineer | ML Engineer" />
     <meta
       property="og:description"
-      content="Software Developer in Melbourne: React, TypeScript, Node.js, AWS and DevOps. Australian citizen, available immediately. Case studies, skills and experience."
+      content="Software Developer in Melbourne: React, TypeScript, Node.js, AWS, DevOps, Full-Stack AI Engineer and ML Engineer. Australian citizen, available immediately."
     />
     <meta property="og:url" content="https://thang-truong.blog/" />
     <meta property="og:image" content="https://thang-truong.blog/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Thang Truong, Software Developer: FrontEnd, BackEnd, FullStack, DevOps. Melbourne." />
+    <meta property="og:image:alt" content="Thang Truong, Software Developer: FrontEnd, BackEnd, FullStack, DevOps, Full-Stack AI Engineer, ML Engineer. Melbourne." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps" />
+    <meta name="twitter:title" content="Thang Truong | Software Developer | FrontEnd | BackEnd | FullStack | DevOps | Full-Stack AI Engineer | ML Engineer" />
     <meta
       name="twitter:description"
-      content="Software Developer in Melbourne: React, TypeScript, Node.js, AWS and DevOps. Available immediately."
+      content="Software Developer in Melbourne: React, TypeScript, Node.js, AWS, DevOps, Full-Stack AI Engineer and ML Engineer. Available immediately."
     />
     <meta name="twitter:image" content="https://thang-truong.blog/og-image.png" />
 
     <script>
       // Applies the saved or OS theme before first paint to avoid a light/dark flash.
+      // Preference: "light" | "dark" | "system" (missing → system).
       (function () {
         try {
           var saved = localStorage.getItem("theme");
-          var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var dark =
+            saved === "dark"
+              ? true
+              : saved === "light"
+                ? false
+                : window.matchMedia("(prefers-color-scheme: dark)").matches;
           var root = document.documentElement;
           root.classList.toggle("dark", dark);
           root.style.colorScheme = dark ? "dark" : "light";
@@ -56,7 +62,11 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Thang Truong",
-        "jobTitle": "Software Developer",
+        "jobTitle": [
+          "Software Developer",
+          "Full-Stack AI Engineer",
+          "ML Engineer"
+        ],
         "url": "https://thang-truong.blog/",
         "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressCountry": "AU" },
         "alumniOf": "Swinburne University of Technology",

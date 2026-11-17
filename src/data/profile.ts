@@ -7,16 +7,20 @@ const env = import.meta.env;
 const cleanEmail = (value?: string) => (value ?? "").trim().replace(/\.$/, "");
 
 const role = "Software Developer";
-const specialties = ["FrontEnd", "BackEnd", "FullStack", "DevOps"] as const;
+const specialties = ["FrontEnd", "BackEnd", "FullStack", "DevOps", "Full-Stack AI Engineer", "ML Engineer"] as const;
 
 export const profile = {
   name: "Thang Truong",
   role,
   specialties,
   headline: [role, ...specialties].join(" | "),
+  /** Short list for meta tags and hiring CTAs. */
+  specialtiesLabel: specialties.join(", "),
+  lookingFor:
+    "Software developer roles: frontend, backend, full-stack, DevOps, Full-Stack AI Engineer or ML Engineer",
   location: "Melbourne, Australia",
   positioning:
-    "I take web products from interface to production: React and TypeScript front ends, Node.js and .NET APIs, and automated deployments on AWS, Azure and GCP.",
+    "I take web products from interface to production: React and TypeScript UIs (including ordering flows and touch-first POS layouts), Node.js and .NET APIs, and automated deployments on AWS, Azure and GCP. Open to Full-Stack AI Engineer and ML Engineer roles as I deepen applied AI at Deakin.",
   intro:
     "Swinburne ICT graduate, now studying a part-time Master of Applied AI at Deakin, with an earlier career as a PHP and JavaScript developer and tester.",
   status: "Open to work",
